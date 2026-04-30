@@ -1,7 +1,7 @@
 """
     comparisons/Report/report.jl
 
-Plain-text comparison table printer for PULSAR benchmark results.
+Plain-text comparison table printer for Pulsar benchmark results.
 
 Functions:
   print_report(results)        — one detailed table per benchmark problem

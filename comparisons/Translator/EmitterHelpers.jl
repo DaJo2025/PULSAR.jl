@@ -2,7 +2,7 @@
     comparisons/Translator/EmitterHelpers.jl
 
 Small utilities shared by every native-script emitter.  The single place
-where PULSAR's spin-state symbols (`:Iz`, `:mIy`, ...) are mapped to the
+where Pulsar's spin-state symbols (`:Iz`, `:mIy`, ...) are mapped to the
 string/operator primitives of each target program.
 """
 
@@ -11,7 +11,7 @@ string/operator primitives of each target program.
 """
     state_symbol_to(symbol::Symbol, target::Symbol, spin_idx::Int=1) -> String
 
-Convert a PULSAR single-spin state symbol to the corresponding native token
+Convert a Pulsar single-spin state symbol to the corresponding native token
 for one target program.  `target` is one of `:spinach`, `:qutip`, `:qopt`,
 `:simpson`, `:krotov_jl`, `:quantumcontrol`.  `spin_idx` is used by
 targets that embed the spin index in the token (Spinach `"Lz",1`, SIMPSON
@@ -103,7 +103,7 @@ end
 # ─── QuantumControl.jl (in-process) ───────────────────────────────────────────
 
 # QuantumControl is in-process Julia; emitter calls `build_state_vector` on
-# the PULSAR MRSpinSystem rather than emitting a string.  This function exists
+# the Pulsar MRSpinSystem rather than emitting a string.  This function exists
 # for API symmetry — it returns the Julia source string a reader would write.
 function _to_qc(sym::Symbol, spin_idx::Int)::String
     sym === :Iz  && return "ComplexF64[1, 0]"

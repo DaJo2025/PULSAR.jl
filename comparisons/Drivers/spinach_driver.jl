@@ -10,7 +10,7 @@ Workflow:
      `matlab -batch` subprocess).
   3. Parse the normalised waveform (already divided by `pwr_levels`) via
      [`parse_waveform_file`](@ref) with `convention = :normalised`.
-  4. Re-evaluate fidelity through PULSAR's [`grape_state_kernel`](@ref).
+  4. Re-evaluate fidelity through Pulsar's [`grape_state_kernel`](@ref).
 
 Capabilities declared in `SPINACH_CAPABILITIES` (inside `SpinachEmitter.jl`).
 """
@@ -93,7 +93,7 @@ function _run_spinach_subprocess(problem::BenchmarkProblem, driver_name::String,
 
     # MATLAB's parpool breaks when OMP_NUM_THREADS (or sibling vars) cap its
     # worker count. Strip those from the subprocess env; the emitted script
-    # honours PULSAR_NCORES via maxNumCompThreads / parcluster.
+    # honours Pulsar_NCORES via maxNumCompThreads / parcluster.
     matlab_env = copy(ENV)
     for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS",
               "VECLIB_MAXIMUM_THREADS", "NUMEXPR_NUM_THREADS")

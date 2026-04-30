@@ -8,13 +8,13 @@
 # The invariant Q[k]† · U_k · P[k] = U_total is the diagnostic.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 
-const _tgrape_step_hamiltonian! = PULSAR._tgrape_step_hamiltonian!
-const _tgrape_gate_value_and_grad! = PULSAR._tgrape_gate_value_and_grad!
-const _tgrape_state_value_and_grad! = PULSAR._tgrape_state_value_and_grad!
+const _tgrape_step_hamiltonian! = Pulsar._tgrape_step_hamiltonian!
+const _tgrape_gate_value_and_grad! = Pulsar._tgrape_gate_value_and_grad!
+const _tgrape_state_value_and_grad! = Pulsar._tgrape_state_value_and_grad!
 
 @testset "tGRAPE — gradient correctness" begin
 
@@ -46,7 +46,7 @@ const _tgrape_state_value_and_grad! = PULSAR._tgrape_state_value_and_grad!
             Hk      = Matrix{ComplexF64}(undef, 2, 2)
             for k in 1:n_t
                 _tgrape_step_hamiltonian!(Hk, sys, w_, k)
-                U_total = PULSAR.compute_propagator(Hk, dt_[k]) * U_total
+                U_total = Pulsar.compute_propagator(Hk, dt_[k]) * U_total
             end
             return abs2(tr(U_target' * U_total) / 2)
         end
@@ -91,7 +91,7 @@ const _tgrape_state_value_and_grad! = PULSAR._tgrape_state_value_and_grad!
             Hk = Matrix{ComplexF64}(undef, 2, 2)
             for k in 1:n_t
                 _tgrape_step_hamiltonian!(Hk, sys, w_, k)
-                ψ = PULSAR.compute_propagator(Hk, dt_[k]) * ψ
+                ψ = Pulsar.compute_propagator(Hk, dt_[k]) * ψ
             end
             return abs2(dot(ψ_target, ψ))
         end
@@ -129,7 +129,7 @@ const _tgrape_state_value_and_grad! = PULSAR._tgrape_state_value_and_grad!
         T_fix  = π / 2  # exact π pulse time when H_c = σx and amp = 1
         dt0    = T_fix / n_t2
 
-        w_opt, dt_opt, F_opt, stats = PULSAR.tgrape_optimize(
+        w_opt, dt_opt, F_opt, stats = Pulsar.tgrape_optimize(
             sys2, target, w0, dt0;
             parameterization = :softmax,
             max_iter = 200, tol = 1e-8)

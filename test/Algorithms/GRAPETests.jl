@@ -5,7 +5,7 @@
 # a failure points immediately at the underlying bug.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 

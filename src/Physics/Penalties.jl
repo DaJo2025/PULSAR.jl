@@ -417,7 +417,7 @@ end
 # ═══════════════════════════════════════════════════════════════════════════════
 # Section 4b — External-package-inspired penalty functors (waveform-only)
 #
-# Quandary, Spinach and qopt provide several penalty styles PULSAR did not
+# Quandary, Spinach and qopt provide several penalty styles Pulsar did not
 # previously expose as first-class functors.  The five subtypes below all
 # operate on the waveform alone, so they slot into the existing AbstractPenalty
 # interface and the `make_penalty_fns` / `make_penalty_grad_fns` helpers.

@@ -1,24 +1,24 @@
 # API — IO
 
 Pulse export, checkpointing, and the `Output` submodule.
-Source: [`src/IO/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/IO).
+Source: [`src/IO/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/IO).
 
 ## Output / pulse export
 
 ```@docs
-PULSAR.Output.OptimizedPulse
-PULSAR.Output.export_pulse
-PULSAR.Output.register_exporter
-PULSAR.Output.replace_exporter
-PULSAR.Output.list_exporters
-PULSAR.Output.BrukerShape
-PULSAR.Output.JEOLShape
-PULSAR.Output.EPRShape
-PULSAR.Output.PulseqSequence
-PULSAR.Output.QiskitWaveformExport
-PULSAR.Output.QuilTExport
-PULSAR.Output.QUAExport
-PULSAR.Output.PulserExport
+Pulsar.Output.OptimizedPulse
+Pulsar.Output.export_pulse
+Pulsar.Output.register_exporter
+Pulsar.Output.replace_exporter
+Pulsar.Output.list_exporters
+Pulsar.Output.BrukerShape
+Pulsar.Output.JEOLShape
+Pulsar.Output.EPRShape
+Pulsar.Output.PulseqSequence
+Pulsar.Output.QiskitWaveformExport
+Pulsar.Output.QuilTExport
+Pulsar.Output.QUAExport
+Pulsar.Output.PulserExport
 ```
 
 ## Bruker direct save

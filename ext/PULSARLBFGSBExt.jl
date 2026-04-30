@@ -1,15 +1,15 @@
-module PULSARLBFGSBExt
+module PulsarLBFGSBExt
 
-using PULSAR
+using Pulsar
 using LBFGSB
 using LinearAlgebra
-import PULSAR: _ext_lbfgsb_optimize, _LBFGSB_LOADED
+import Pulsar: _ext_lbfgsb_optimize, _LBFGSB_LOADED
 
 function __init__()
     _LBFGSB_LOADED[] = true
 end
 
-# Map PULSAR's tol / f_tol / convergence_mode onto LBFGSB.jl's `pgtol` and
+# Map Pulsar's tol / f_tol / convergence_mode onto LBFGSB.jl's `pgtol` and
 # `factr` knobs. LBFGSB stops on
 #   max|proj_g_i| ≤ pgtol      (gradient criterion), and on
 #   (f^k - f^{k+1}) / max{|f^k|,|f^{k+1}|,1} ≤ factr · ε_mach (Δf criterion).
@@ -121,4 +121,4 @@ function _ext_lbfgsb_optimize(
     return final_x, final_f, stats
 end
 
-end  # module PULSARLBFGSBExt
+end  # module PulsarLBFGSBExt

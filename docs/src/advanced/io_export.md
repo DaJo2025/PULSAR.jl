@@ -1,6 +1,6 @@
 # Pulse export
 
-PULSAR's `IO` layer ([`src/IO/Output.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/IO/Output.jl), [`PulseExport.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/IO/PulseExport.jl)) exports optimized pulses to the
+Pulsar's `IO` layer ([`src/IO/Output.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/IO/Output.jl), [`PulseExport.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/IO/PulseExport.jl)) exports optimized pulses to the
 file formats consumed by spectrometers and quantum-computing toolchains.
 
 ## API entry point
@@ -33,7 +33,7 @@ list_exporters()
 
 ## Bruker format details
 
-Bruker JCAMP-DX shape files use polar encoding. PULSAR's forward (save)
+Bruker JCAMP-DX shape files use polar encoding. Pulsar's forward (save)
 conversion is:
 
 ```julia
@@ -41,7 +41,7 @@ amp_pct   = clamp(√(wx² + wy²) / pwr_level × 100, 0, 100)
 phase_deg = mod(atand(wy, wx), 360)
 ```
 
-Note that PULSAR ships only the **save** path. There is no `load_bruker_shape`
+Note that Pulsar ships only the **save** path. There is no `load_bruker_shape`
 in the package — for round-trip work, write a small helper:
 
 ```julia

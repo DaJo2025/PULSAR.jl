@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — AutoDiff Tests
+# Pulsar.jl — AutoDiff Tests
 # Pulse Design Library for Spin Control Algorithms and Rollout
 # ============================================================
 
@@ -43,7 +43,7 @@ using Test, LinearAlgebra
     @testset "Backend selection returns valid symbol" begin
         system, target, controls = setup_qubit()
         cfg = AutoDiffConfig()
-        be  = PULSAR.select_autodiff_backend(system, controls, cfg)
+        be  = Pulsar.select_autodiff_backend(system, controls, cfg)
         @test be in (:forward, :reverse, :finite_diff)
     end
 

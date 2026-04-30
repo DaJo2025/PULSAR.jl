@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — End-to-End Integration Tests
+# Pulsar.jl — End-to-End Integration Tests
 # Pulse Design Library for Spin Control Algorithms and Rollout
 # ============================================================
 

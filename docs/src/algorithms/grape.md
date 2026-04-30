@@ -1,7 +1,7 @@
 # GRAPE family
 
 GRAPE (**Gradient Ascent Pulse Engineering**, Khaneja et al., *J. Magn. Reson.*
-**172** (2005) 296) is PULSAR's reference first-order algorithm. The core
+**172** (2005) 296) is Pulsar's reference first-order algorithm. The core
 update is gradient ascent on the fidelity `F(w)` with respect to the
 piecewise-constant control waveform `w[c, k]`.
 

@@ -3,7 +3,7 @@
 
 Solver-agnostic description of a superconducting-qubit (transmon) problem.
 Consumed by `QuandaryEmitter` (emits a `standardmodel=True` Python script)
-and reconstructed as an `MRControl` for the PULSAR driver.
+and reconstructed as an `MRControl` for the Pulsar driver.
 
 A `TransmonAnnotation` carries the same four elements Quandary's native
 interface expects:
@@ -16,7 +16,7 @@ interface expects:
     `target_unitary` on the same subspace
 
 Guard levels (one extra level per qubit in the emitted model) are standard
-in Quandary's leakage-aware optimisation.  PULSAR's `MRControl` rebuild
+in Quandary's leakage-aware optimisation.  Pulsar's `MRControl` rebuild
 uses `n_levels = essential + guard` per qudit to match.
 
 See BM07 (single-transmon X gate) and BM08 (2-transmon CNOT) for canonical
@@ -116,7 +116,7 @@ end
 
 Per-qubit `(a+a†)/2`, `i(a†−a)/2` operators embedded into the full
 Hilbert space.  Two controls per qubit, in the order
-`[Ix_q1, Iy_q1, Ix_q2, Iy_q2, …]` — matches PULSAR's `TransmonSystem` and
+`[Ix_q1, Iy_q1, Ix_q2, Iy_q2, …]` — matches Pulsar's `TransmonSystem` and
 Quandary's native `Hc_re` / `Hc_im` pair.
 """
 function build_transmon_controls(ann::TransmonAnnotation)::Vector{Matrix{ComplexF64}}
@@ -171,14 +171,14 @@ end
 """
     build_ctrl_from_transmon(ann; kwargs...) -> MRControl
 
-Reconstruct the PULSAR matrix form for a `TransmonAnnotation`: a single-drift,
+Reconstruct the Pulsar matrix form for a `TransmonAnnotation`: a single-drift,
 single-state-pair `MRControl` with the transmon rotating-frame drift,
 `2·n_q` real control operators (x/y per qubit), and shared `pwr_levels =
-[2π · omega_max_hz]`.  Used by the PULSAR driver so the benchmark runs
+[2π · omega_max_hz]`.  Used by the Pulsar driver so the benchmark runs
 without any changes to `pulsar_driver.jl`.
 
 For `target_kind = :gate`, the MRControl encodes one state pair per column
-of the target unitary (Reich/Goerz/Koch convention), so PULSAR optimises
+of the target unitary (Reich/Goerz/Koch convention), so Pulsar optimises
 the gate via the full basis-state transfer set.
 """
 function build_ctrl_from_transmon(ann::TransmonAnnotation; kwargs...)

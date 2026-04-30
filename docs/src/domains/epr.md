@@ -7,9 +7,9 @@ EPR systems differ from NMR by:
 - broad resonance spectra requiring broadband or chirp pulses.
 
 The EPR system type lives in
-[`src/Types/EPRSpinSystem.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Types/EPRSpinSystem.jl)
+[`src/Types/EPRSpinSystem.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Types/EPRSpinSystem.jl)
 and the optimisation wrapper in
-[`src/Application/MR/EPR/EPROptControl.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/MR/EPR/EPROptControl.jl).
+[`src/Application/MR/EPR/EPROptControl.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/MR/EPR/EPROptControl.jl).
 
 ## Building a system
 

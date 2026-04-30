@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Control parameterization layer (Theme 2)
+# Pulsar.jl — Control parameterization layer (Theme 2)
 # ============================================================
 #
 # Maps an unconstrained optimisation vector `θ` to a piecewise-constant

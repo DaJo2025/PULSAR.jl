@@ -79,7 +79,7 @@ function _run_krotov(problem::BenchmarkProblem, driver_name::String)
 
     fidelity = canonical_rescore(waveform, ctrl)
 
-    @printf("  [Krotov fidelity: %.4f | PULSAR fidelity: %.4f]\n",
+    @printf("  [Krotov fidelity: %.4f | Pulsar fidelity: %.4f]\n",
             isnan(krotov_fidelity) ? 0.0 : krotov_fidelity, fidelity)
 
     return BenchmarkResult(
@@ -99,7 +99,7 @@ end
 function _extract_krotov_fidelity(log_file::String)::Float64
     isfile(log_file) || return NaN
     for line in readlines(log_file)
-        startswith(line, "PULSAR_KROTOV_FIDELITY:") || continue
+        startswith(line, "Pulsar_KROTOV_FIDELITY:") || continue
         return parse(Float64, split(line)[2])
     end
     return NaN

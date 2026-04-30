@@ -14,7 +14,7 @@
 #   (6) Krotov ensemble dispatch (:mean monotone, non-:mean rejected)
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 
@@ -165,7 +165,7 @@ end
     F_obj, G_obj = ensemble_value_and_grad(obj_mean, vec(w0))
 
     # Reference: direct call to the existing batched kernel
-    F_ref, G_ref = PULSAR.grape_state_kernel(w0, ctrl)
+    F_ref, G_ref = Pulsar.grape_state_kernel(w0, ctrl)
     @test F_obj ≈ F_ref atol = 1e-12
     @test maximum(abs.(G_obj .- vec(G_ref))) ≤ 1e-12
 

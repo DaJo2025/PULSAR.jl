@@ -9,10 +9,10 @@
 #   - Hamiltonian Hermiticity
 #
 # These tests are intentionally physics-agnostic; they check pure
-# linear-algebra and calculus properties of the PULSAR internals.
+# linear-algebra and calculus properties of the Pulsar internals.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 
@@ -141,7 +141,7 @@ const I4  = ComplexF64[1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1]
         #
         # We test on two system sizes to catch dimension-specific bugs.
 
-        # PULSAR's GRAPE gradient uses the standard first-order matrix-exp
+        # Pulsar's GRAPE gradient uses the standard first-order matrix-exp
         # derivative (∂U_k/∂u_j ≈ -i dt U_k H_j). Its accuracy versus FD
         # scales with (dt · ‖H_total‖)², so we choose modest Rabi/dt to keep
         # the per-step error small enough that FD agreement to 1% is possible.
@@ -243,7 +243,7 @@ const I4  = ComplexF64[1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1]
         evals = sort(real(eigvals(Sz1)))
         @test norm(evals - [-1.0, 0.0, 1.0]) < 1e-12
 
-        # ---- PULSAR spin_operators helper: spin-1/2 ----
+        # ---- Pulsar spin_operators helper: spin-1/2 ----
         Sx_h, Sy_h, Sz_h = spin_operators(1//2)
         @test norm(Sx_h - Sx) < 1e-14
         @test norm(Sy_h - Sy) < 1e-14
@@ -254,7 +254,7 @@ const I4  = ComplexF64[1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1]
     # -----------------------------------------------------------------------
     @testset "Hamiltonian Hermiticity" begin
 
-        # All constructors in PULSAR must return Hermitian Hamiltonians.
+        # All constructors in Pulsar must return Hermitian Hamiltonians.
 
         # 1. Single-qubit system
         H_drift_1q = 2π * 100e3 * σ_z

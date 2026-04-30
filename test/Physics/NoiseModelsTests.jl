@@ -8,7 +8,7 @@
 #   • Constructor validation rejects malformed inputs.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 

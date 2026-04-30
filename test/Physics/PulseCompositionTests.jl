@@ -7,7 +7,7 @@
 # the un-composited problem with shifted boundary states.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 
 const _T9σX = ComplexF64[0 1; 1 0]

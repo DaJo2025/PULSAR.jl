@@ -21,7 +21,7 @@ using LinearAlgebra
 const _CUDA_LOADED = Ref{Bool}(false)
 
 # Attempt to load CUDA.jl at include time.  Errors are swallowed so that
-# PULSAR loads cleanly on systems without CUDA.
+# Pulsar loads cleanly on systems without CUDA.
 let
     try
         @eval using CUDA

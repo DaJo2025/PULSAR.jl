@@ -2,7 +2,7 @@
 
 Objectives, penalties, gradients, Lindblad, autodiff, UQ, sensitivity, MR
 physics. Source:
-[`src/Physics/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Physics).
+[`src/Physics/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Physics).
 
 ## Objectives
 

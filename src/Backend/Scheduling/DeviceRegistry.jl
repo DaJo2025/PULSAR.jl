@@ -3,10 +3,10 @@
 # Package-level compute device registry — thread-safe via task-local storage.
 #
 # Usage:
-#   PULSAR.set_device!(:cpu)         # set default for this task (and new tasks)
-#   PULSAR.get_device()              # returns device for current task
-#   PULSAR.available_devices()       # returns list of currently usable devices
-#   PULSAR.with_device(:metal) do    # scoped override — restores previous on exit
+#   Pulsar.set_device!(:cpu)         # set default for this task (and new tasks)
+#   Pulsar.get_device()              # returns device for current task
+#   Pulsar.available_devices()       # returns list of currently usable devices
+#   Pulsar.with_device(:metal) do    # scoped override — restores previous on exit
 #       grape_optimize(...)
 #   end
 # ============================================================================
@@ -23,7 +23,7 @@ const _DEVICE_KEY = :pulsar_device
 # ============================================================================
 
 """
-    PULSAR.set_device!(device::Symbol)
+    Pulsar.set_device!(device::Symbol)
 
 Set the compute device for the **current task** and update the global default
 so that newly spawned tasks also inherit this choice.
@@ -32,9 +32,9 @@ Accepted values:
 - `:cpu`   — Julia multi-threading (`Threads.@threads`). Default.
              Scale with `julia -t N` or `JULIA_NUM_THREADS=N`.
 - `:cuda`  — NVIDIA GPU via CUDA.jl.
-             Requires `import CUDA` **before** `using PULSAR`.
+             Requires `import CUDA` **before** `using Pulsar`.
 - `:metal` — Apple Silicon GPU via Metal.jl.
-             Requires `import Metal` **before** `using PULSAR`.
+             Requires `import Metal` **before** `using Pulsar`.
 
 If the requested GPU backend is not loaded, emits a warning and keeps the
 current device unchanged.
@@ -42,10 +42,10 @@ current device unchanged.
 # Example
 ```julia
 import Metal
-using PULSAR
+using Pulsar
 
-PULSAR.set_device!(:metal)
-PULSAR.available_devices()   # → [:cpu, :metal]
+Pulsar.set_device!(:metal)
+Pulsar.available_devices()   # → [:cpu, :metal]
 ```
 """
 function set_device!(device::Symbol)
@@ -54,13 +54,13 @@ function set_device!(device::Symbol)
             "Unknown device :$device. Choose :cpu, :cuda, or :metal."))
     if device === :cuda && !_CUDA_LOADED[]
         @warn "set_device!(:cuda): CUDA.jl is not loaded. " *
-              "Add `import CUDA` before `using PULSAR` to enable GPU support. " *
+              "Add `import CUDA` before `using Pulsar` to enable GPU support. " *
               "Keeping current device :$(get_device())."
         return nothing
     end
     if device === :metal && !_METAL_LOADED[]
         @warn "set_device!(:metal): Metal.jl is not loaded. " *
-              "Add `import Metal` before `using PULSAR` to enable GPU support. " *
+              "Add `import Metal` before `using Pulsar` to enable GPU support. " *
               "Keeping current device :$(get_device())."
         return nothing
     end
@@ -71,7 +71,7 @@ function set_device!(device::Symbol)
 end
 
 """
-    PULSAR.get_device() → Symbol
+    Pulsar.get_device() → Symbol
 
 Return the compute device for the **current task**.
 
@@ -87,17 +87,17 @@ function get_device()::Symbol
 end
 
 """
-    PULSAR.available_devices() → Vector{Symbol}
+    Pulsar.available_devices() → Vector{Symbol}
 
 Return the list of devices that are currently usable.
 
 Always includes `:cpu`. GPU devices appear only when their package
-(`CUDA.jl` or `Metal.jl`) was loaded before `using PULSAR`.
+(`CUDA.jl` or `Metal.jl`) was loaded before `using Pulsar`.
 
 # Example
 ```julia
-import Metal; using PULSAR
-PULSAR.available_devices()  # → [:cpu, :metal]
+import Metal; using Pulsar
+Pulsar.available_devices()  # → [:cpu, :metal]
 ```
 """
 function available_devices()::Vector{Symbol}
@@ -112,7 +112,7 @@ end
 # ============================================================================
 
 """
-    PULSAR.with_device(f, device::Symbol)
+    Pulsar.with_device(f, device::Symbol)
 
 Execute `f()` with the compute device temporarily overridden to `device` for
 the **current task**, then restore the previous device on exit (even if `f`

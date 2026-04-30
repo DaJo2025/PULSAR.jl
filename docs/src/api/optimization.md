@@ -1,7 +1,7 @@
 # API — Optimization
 
 All optimizers, configurations, and result types. Source:
-[`src/Optimization/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Optimization).
+[`src/Optimization/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Optimization).
 
 ## Result type
 

@@ -1,6 +1,6 @@
-# PULSAR Cross-Package Optimal Control Benchmark
+# Pulsar Cross-Package Optimal Control Benchmark
 
-This directory contains a driver-based framework for benchmarking PULSAR
+This directory contains a driver-based framework for benchmarking Pulsar
 against other quantum optimal control packages on user-supplied pulse-design
 problems.
 
@@ -20,7 +20,7 @@ comparisons/
   Drivers/             # One file per external solver
     driver_interface.jl       # AbstractSolverDriver, BenchmarkResult,
                               # not_available_result, error_result
-    pulsar_driver.jl          # PULSAR (lbfgs, cmaes, grape, lbfgsb, cg)
+    pulsar_driver.jl          # Pulsar (lbfgs, cmaes, grape, lbfgsb, cg)
     quantumcontrol_driver.jl  # QuantumControl.jl
     krotov_driver.jl          # Krotov.jl
     qutip_driver.jl           # QuTiP (Python via PythonCall)
@@ -47,9 +47,9 @@ julia --project=. comparisons/run_comparisons.jl
 
 # Subset of problems / drivers
 julia --project=. comparisons/run_comparisons.jl --problems P_BB180,P_INEPT
-julia --project=. comparisons/run_comparisons.jl --packages PULSAR_lbfgs,Krotov
+julia --project=. comparisons/run_comparisons.jl --packages Pulsar_lbfgs,Krotov
 julia --project=. comparisons/run_comparisons.jl --problems P_BB180 \
-                                                  --packages PULSAR_lbfgs,QuantumControl
+                                                  --packages Pulsar_lbfgs,QuantumControl
 ```
 
 Results are printed as fixed-width tables and saved to
@@ -64,7 +64,7 @@ that bundles the system, target, control template, fidelity threshold, and
 time limit. A minimal example for a broadband ¹H 180° inversion:
 
 ```julia
-using PULSAR
+using Pulsar
 
 function my_broadband_180()
     sys = mr_system(spins=["1H"],
@@ -89,7 +89,7 @@ end
 Then register it in `run_comparisons.jl` next to the existing `ALL_PROBLEMS`
 dictionary.
 
-The bundled drivers re-evaluate fidelity through PULSAR's canonical
+The bundled drivers re-evaluate fidelity through Pulsar's canonical
 `grape_state_kernel` (or `grape_lindblad_kernel` for open-system problems)
 regardless of what the external solver reports — this is the apples-to-apples
 fairness invariant.
@@ -100,11 +100,11 @@ fairness invariant.
 
 | Driver key       | Package                | Method            |
 |------------------|------------------------|-------------------|
-| `PULSAR_lbfgs`   | PULSAR (built-in)      | L-BFGS            |
-| `PULSAR_cmaes`   | PULSAR (built-in)      | CMA-ES            |
-| `PULSAR_grape`   | PULSAR (built-in)      | GRAPE             |
-| `PULSAR_lbfgsb`  | PULSAR (built-in)      | L-BFGS-B          |
-| `PULSAR_cg`      | PULSAR (built-in)      | Nonlinear CG      |
+| `Pulsar_lbfgs`   | Pulsar (built-in)      | L-BFGS            |
+| `Pulsar_cmaes`   | Pulsar (built-in)      | CMA-ES            |
+| `Pulsar_grape`   | Pulsar (built-in)      | GRAPE             |
+| `Pulsar_lbfgsb`  | Pulsar (built-in)      | L-BFGS-B          |
+| `Pulsar_cg`      | Pulsar (built-in)      | Nonlinear CG      |
 | `QuantumControl` | QuantumControl.jl      | GRAPE             |
 | `Krotov`         | Krotov.jl              | Krotov            |
 | `QuTiP`          | QuTiP (Python)         | GRAPE             |
@@ -184,8 +184,8 @@ export PATH="$PATH:$(pwd)/build"
 ══════════════════════════════════════════════════════════════════════
 Package/Method               Fidelity       Time    Iters  Status
 ──────────────────────────────────────────────────────────────────────
-  PULSAR/:lbfgs              0.9987       1.24 s      312  converged
-  PULSAR/:cmaes              0.9941       8.73 s      500  max_iter
+  Pulsar/:lbfgs              0.9987       1.24 s      312  converged
+  Pulsar/:cmaes              0.9941       8.73 s      500  max_iter
   QuantumControl/GRAPE       0.9983       1.89 s      298  converged
   QuTiP/GRAPE          NOT AVAILABLE — install PythonCall + pip install qutip
 ──────────────────────────────────────────────────────────────────────
@@ -199,7 +199,7 @@ that directory is `.gitignore`'d so private benchmark data stays local.
 ## Fairness invariants
 
 - **Canonical fidelity re-evaluation.** Every driver's reported fidelity is
-  recomputed through PULSAR's `grape_state_kernel` /
+  recomputed through Pulsar's `grape_state_kernel` /
   `grape_lindblad_kernel` after the external solver returns.
 - **Same initial guess.** All drivers receive the same `guess_seed`.
 - **`time_limit_s`** is advisory.

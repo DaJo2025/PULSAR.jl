@@ -139,7 +139,7 @@ function _run_quantumcontrol(problem::BenchmarkProblem, driver_name::String)
     end
     clamp!(waveform, ctrl.l_bound, ctrl.u_bound)
 
-    # ── Re-evaluate fidelity with PULSAR canonical kernel ─────────────────────
+    # ── Re-evaluate fidelity with Pulsar canonical kernel ─────────────────────
     fidelity = canonical_rescore(waveform, ctrl)
 
     n_iter    = get(opt_result, :iter, ctrl.max_iter)

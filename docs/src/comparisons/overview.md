@@ -1,12 +1,12 @@
 # Cross-package benchmark — overview
 
-PULSAR ships a self-contained framework for benchmarking its optimizers
+Pulsar ships a self-contained framework for benchmarking its optimizers
 against other quantum optimal control packages on a shared problem
 definition. The framework lives in
-[`comparisons/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/comparisons)
-and is independent of the package itself — nothing in `src/PULSAR.jl`
+[`comparisons/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/comparisons)
+and is independent of the package itself — nothing in `src/Pulsar.jl`
 depends on it, and you do not need any external solver installed to use
-PULSAR.
+Pulsar.
 
 ## What is shipped
 
@@ -40,7 +40,7 @@ julia --project=. comparisons/run_comparisons.jl
 
 # A subset
 julia --project=. comparisons/run_comparisons.jl --problems P_BB180,P_INEPT
-julia --project=. comparisons/run_comparisons.jl --packages PULSAR_lbfgs,Krotov
+julia --project=. comparisons/run_comparisons.jl --packages Pulsar_lbfgs,Krotov
 ```
 
 CLI flags:
@@ -56,9 +56,9 @@ The framework is designed so that every solver is judged by the *same*
 ruler:
 
 - **Canonical fidelity re-evaluation.** Every driver's reported fidelity is
-  recomputed through PULSAR's `grape_state_kernel` (closed-system) or
+  recomputed through Pulsar's `grape_state_kernel` (closed-system) or
   `grape_lindblad_kernel` (open-system) after the external solver returns
-  its waveform. The number that appears in the table is always PULSAR's
+  its waveform. The number that appears in the table is always Pulsar's
   re-simulation, never the external solver's self-report.
 - **Same initial guess.** All drivers receive the same `problem.guess_seed`
   and use it to seed an `Random.MersenneTwister` for the random initial
@@ -72,11 +72,11 @@ ruler:
 ## Result type
 
 Every driver returns a `BenchmarkResult` defined in
-[`Drivers/driver_interface.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/comparisons/Drivers/driver_interface.jl):
+[`Drivers/driver_interface.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/comparisons/Drivers/driver_interface.jl):
 
 ```julia
 struct BenchmarkResult
-    driver_name       :: String           # e.g. "PULSAR/:lbfgs"
+    driver_name       :: String           # e.g. "Pulsar/:lbfgs"
     problem_id        :: String           # matches BenchmarkProblem.id
     fidelity          :: Float64          # canonical re-evaluation
     wall_time_s       :: Float64
@@ -111,8 +111,8 @@ to `comparisons/Results/`:
 ══════════════════════════════════════════════════════════════════════
 Package/Method               Fidelity       Time    Iters  Status
 ──────────────────────────────────────────────────────────────────────
-  PULSAR/:lbfgs              0.9987       1.24 s      312  converged
-  PULSAR/:cmaes              0.9941       8.73 s      500  max_iter
+  Pulsar/:lbfgs              0.9987       1.24 s      312  converged
+  Pulsar/:cmaes              0.9941       8.73 s      500  max_iter
   QuantumControl/GRAPE       0.9983       1.89 s      298  converged
   QuTiP/GRAPE          NOT AVAILABLE — install PythonCall + pip install qutip
 ──────────────────────────────────────────────────────────────────────

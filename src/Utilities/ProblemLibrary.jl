@@ -1,7 +1,7 @@
 """
     ProblemLibrary.jl
 
-Canonical problem library for PULSAR quantum control benchmarks.
+Canonical problem library for Pulsar quantum control benchmarks.
 
 Provides ready-to-use problem instances covering:
   - Single-qubit gates (Hadamard, NOT/X, π/2 rotations)
@@ -12,7 +12,7 @@ Provides ready-to-use problem instances covering:
   - Random unitary targets for numerical benchmarking
 
 Every function returns a triple `(system, target, controls_init)` that can be
-passed directly to any PULSAR optimizer:
+passed directly to any Pulsar optimizer:
 
     sys, tgt, u0 = hadamard_gate_problem()
     result = grape_optimize(sys, tgt, u0; config = GRAPEConfig(max_iter=500))
@@ -759,7 +759,7 @@ end
 # Exports (collected here for documentation clarity)
 # ============================================================================
 
-# The following functions are exported from PULSAR.jl via the main module:
+# The following functions are exported from Pulsar.jl via the main module:
 #   spin_half_operators, spin_operators, tensor_product_operators
 #   hadamard_gate_problem, not_gate_problem, cnot_gate_problem
 #   state_transfer_0_to_1, state_transfer_0_to_plus

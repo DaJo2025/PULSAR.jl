@@ -18,14 +18,14 @@ using LinearAlgebra
 # ---------------------------------------------------------------------------
 #
 # When the optional `LBFGSB` package is loaded, the extension
-# `ext/PULSARLBFGSBExt.jl` flips `_LBFGSB_LOADED[]` and provides a method for
+# `ext/PulsarLBFGSBExt.jl` flips `_LBFGSB_LOADED[]` and provides a method for
 # `_ext_lbfgsb_optimize`. The default body below is unreachable but kept as a
 # defensive guard.
 
 const _LBFGSB_LOADED = Ref(false)
 
 function _ext_lbfgsb_optimize(::Any, ::Any, ::AbstractVector{<:Real}; kwargs...)
-    error("PULSARLBFGSBExt is not loaded — `import LBFGSB` first or call " *
+    error("PulsarLBFGSBExt is not loaded — `import LBFGSB` first or call " *
           "`lbfgsb_optimize(...; use_native=true)`.")
 end
 

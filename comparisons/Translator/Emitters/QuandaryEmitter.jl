@@ -38,11 +38,11 @@ const QUANDARY_CAPABILITIES = SolverCapabilities(
 )
 
 """
-    emit_quandary(ann, workdir; problem_id="PULSAR",
+    emit_quandary(ann, workdir; problem_id="Pulsar",
                     guess_seed=nothing) -> (script_path, waveform_path)
 """
 function emit_quandary(ann::PhysicsAnnotation, workdir::String;
-                         problem_id::String="PULSAR",
+                         problem_id::String="Pulsar",
                          guess_seed::Union{Nothing,Int}=nothing)::Tuple{String,String}
     script_path   = joinpath(workdir, "quandary_run.py")
     waveform_path = joinpath(workdir, "quandary_shape.txt")
@@ -63,7 +63,7 @@ function _emit_quandary_script(io::IO, ann::PhysicsAnnotation,
     n_t     = ann.n_time_steps
     dim     = 2 ^ n_spins
 
-    println(io, "# PULSAR benchmark $problem_id — emitted by QuandaryEmitter.jl")
+    println(io, "# Pulsar benchmark $problem_id — emitted by QuandaryEmitter.jl")
     println(io)
     println(io, "import numpy as np")
     println(io, "import quandary")
@@ -203,7 +203,7 @@ end
 # a custom Hamiltonian here — Quandary does it internally.
 
 function emit_quandary(ann::TransmonAnnotation, workdir::String;
-                         problem_id::String="PULSAR",
+                         problem_id::String="Pulsar",
                          guess_seed::Union{Nothing,Int}=nothing)::Tuple{String,String}
     script_path   = joinpath(workdir, "quandary_run.py")
     waveform_path = joinpath(workdir, "quandary_shape.txt")
@@ -224,7 +224,7 @@ function _emit_quandary_transmon_script(io::IO, ann::TransmonAnnotation,
     n_t     = ann.n_time_steps
     n_ctrl  = 2 * nq                 # Quandary returns (pt, qt) per qudit
 
-    println(io, "# PULSAR benchmark $problem_id — emitted by QuandaryEmitter.jl")
+    println(io, "# Pulsar benchmark $problem_id — emitted by QuandaryEmitter.jl")
     println(io, "# TransmonAnnotation path (standardmodel=True)")
     println(io)
     println(io, "import numpy as np")
@@ -248,9 +248,9 @@ function _emit_quandary_transmon_script(io::IO, ann::TransmonAnnotation,
         println(io, "crosskerr    = $(_py_float_list(xk_vals))")
     end
 
-    # maxctrl_MHz — one per qudit. Quandary's drive uses (a+a†) while PULSAR's
+    # maxctrl_MHz — one per qudit. Quandary's drive uses (a+a†) while Pulsar's
     # Ix = (a+a†)/2, so Quandary's pt saturates at half the "omega_max" to give
-    # the same peak Rabi frequency PULSAR achieves at w = 1.  Emit maxctrl_MHz
+    # the same peak Rabi frequency Pulsar achieves at w = 1.  Emit maxctrl_MHz
     # = omega_max_hz / 2e6 so the returned pt/qt are directly comparable and
     # the normalisation below stays inside [-1, 1] without lossy clipping.
     maxctrl_mhz = fill(ann.omega_max_hz / 2e6, nq)
@@ -316,10 +316,10 @@ function _emit_quandary_transmon_script(io::IO, ann::TransmonAnnotation,
     println(io)
 
     # Write the optimised controls normalised into [-1, 1] per column.
-    # Column order: [pt_q1, qt_q1, pt_q2, qt_q2, ...] to match PULSAR's
+    # Column order: [pt_q1, qt_q1, pt_q2, qt_q2, ...] to match Pulsar's
     # [Ix_q1, Iy_q1, Ix_q2, Iy_q2, ...] operator ordering.
     # Quandary's pt, qt are in MHz; because maxctrl_MHz was set to
-    # omega_max_hz/2e6, the map to PULSAR's w ∈ [-1,1] is w = pt/maxctrl_MHz.
+    # omega_max_hz/2e6, the map to Pulsar's w ∈ [-1,1] is w = pt/maxctrl_MHz.
     println(io, "maxctrl_MHz_arr = np.asarray(maxctrl_MHz, dtype=float)")
     println(io, "opt = np.zeros((nsteps, $n_ctrl))")
     for q in 1:nq

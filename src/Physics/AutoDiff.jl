@@ -1,7 +1,7 @@
 """
     AutomaticDifferentiation.jl
 
-Automatic differentiation (AD) integration for PULSAR quantum control gradients.
+Automatic differentiation (AD) integration for Pulsar quantum control gradients.
 
 Provides forward-mode (ForwardDiff.jl), reverse-mode (Zygote.jl), and
 finite-difference gradient computation as drop-in alternatives to the
@@ -37,8 +37,8 @@ Reference:
 using LinearAlgebra
 
 # ---------------------------------------------------------------------------
-# Extension stubs — real implementations live in ext/PULSARForwardDiffExt.jl
-# and ext/PULSARZygoteExt.jl. These are loaded automatically by Julia 1.9+
+# Extension stubs — real implementations live in ext/PulsarForwardDiffExt.jl
+# and ext/PulsarZygoteExt.jl. These are loaded automatically by Julia 1.9+
 # when ForwardDiff / Zygote are in the environment.
 # ---------------------------------------------------------------------------
 
@@ -318,8 +318,8 @@ function forward_diff_gradient(system::AbstractQuantumSystem,
                                  target::QuantumTarget,
                                  config::AutoDiffConfig)::Matrix{Float64}
     error("ForwardDiff.jl is required for forward-mode AD.\n" *
-          "Add it to your environment and load it: `using ForwardDiff, PULSAR`.\n" *
-          "The PULSARForwardDiffExt extension will provide the implementation automatically.")
+          "Add it to your environment and load it: `using ForwardDiff, Pulsar`.\n" *
+          "The PulsarForwardDiffExt extension will provide the implementation automatically.")
 end
 
 # ---------------------------------------------------------------------------
@@ -360,7 +360,7 @@ function reverse_diff_gradient(system::AbstractQuantumSystem,
                                  target::QuantumTarget,
                                  config::AutoDiffConfig)::Matrix{Float64}
     @warn "[AutoDiff] Zygote not available; falling back to finite differences.\n" *
-          "  Add Zygote to your environment: `using Zygote, PULSAR`."
+          "  Add Zygote to your environment: `using Zygote, Pulsar`."
     return finite_diff_gradient_ad(system, controls, target; eps=config.numerical_eps)
 end
 

@@ -1,7 +1,7 @@
 """
     RobustOptimization.jl
 
-Robust quantum control optimization for PULSAR.jl
+Robust quantum control optimization for Pulsar.jl
 (Pulse Design Library for Spin Control Algorithms and Rollout).
 
 Provides sample-based robust optimization against:
@@ -590,7 +590,7 @@ end
     robust_optimize(system, target, controls_init::Matrix{Float64};
                     config::RobustConfig = RobustConfig()) -> NamedTuple
 
-Top-level robust quantum control optimizer for PULSAR.
+Top-level robust quantum control optimizer for Pulsar.
 
 Dispatches to the appropriate robust method based on `config.uncertainty_type`:
 
@@ -621,7 +621,7 @@ Named tuple with fields:
 This entry point wraps a hand-rolled steepest-ascent loop with Armijo line
 search. If you need the **same** ensemble (`:mean` / `:worst_case` / `:cvar`)
 driven by a different optimizer (L-BFGS, CG, Adam, CMA-ES, …), build the
-ensemble directly and pick any PULSAR optimizer:
+ensemble directly and pick any Pulsar optimizer:
 
 ```julia
 obj       = build_ensemble_from_perturbations(system, target, ctrl;

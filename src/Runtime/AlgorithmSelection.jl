@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Algorithm Selection and Auto-Optimizer
+# Pulsar.jl — Algorithm Selection and Auto-Optimizer
 # Pulse Design Library for Spin Control Algorithms and Rollout
 # ============================================================
 #
@@ -192,7 +192,7 @@ Return a formatted, human-readable description of an AlgorithmRecommendation.
 function describe_recommendation(rec::AlgorithmRecommendation)::String
     io = IOBuffer()
     println(io, "━"^60)
-    println(io, "PULSAR Algorithm Recommendation")
+    println(io, "Pulsar Algorithm Recommendation")
     println(io, "━"^60)
     println(io, "  Method  : $(rec.method)")
     println(io, "  Speed   : $(rec.expected_convergence_rate)")
@@ -217,7 +217,7 @@ end
 
 Automatically select and run the best optimization algorithm.
 
-This is the highest-level entry point in PULSAR.  It calls
+This is the highest-level entry point in Pulsar.  It calls
 `recommend_optimizer`, optionally prints the recommendation, then
 dispatches to the appropriate optimizer and returns its result.
 

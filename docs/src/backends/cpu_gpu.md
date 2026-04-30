@@ -1,6 +1,6 @@
 # CPU / GPU backends
 
-PULSAR's compute kernels target three hardware backends:
+Pulsar's compute kernels target three hardware backends:
 
 | Backend | Module | Activation |
 |---|---|---|
@@ -9,9 +9,9 @@ PULSAR's compute kernels target three hardware backends:
 | Metal | `MetalBackend` | `pkg> add Metal` (Apple Silicon) |
 
 Sources:
-[`src/Backend/Hardware/CPUBackend.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Backend/Hardware/CPUBackend.jl),
-[`CUDABackend.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Backend/Hardware/CUDABackend.jl),
-[`MetalBackend.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Backend/Hardware/MetalBackend.jl).
+[`src/Backend/Hardware/CPUBackend.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Backend/Hardware/CPUBackend.jl),
+[`CUDABackend.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Backend/Hardware/CUDABackend.jl),
+[`MetalBackend.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Backend/Hardware/MetalBackend.jl).
 
 ## Constructors
 
@@ -47,16 +47,16 @@ backends.
 
 | Function | Source | Use |
 |---|---|---|
-| `plan_hybrid_execution(work, backends)` | [`HybridExecution.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Backend/Scheduling/HybridExecution.jl) | Build a plan |
+| `plan_hybrid_execution(work, backends)` | [`HybridExecution.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Backend/Scheduling/HybridExecution.jl) | Build a plan |
 | `adaptive_backend_selection(...)` | same | Pick best backend per item |
 | `estimate_operation_time(op, backend)` | same | Cost model |
 
 ## Graceful fallback
 
 If a GPU backend is requested but the package isn't available (or the runtime
-hasn't loaded it), PULSAR falls back to CPU and emits a `@warn`. This is
+hasn't loaded it), Pulsar falls back to CPU and emits a `@warn`. This is
 controlled by the `_CUDA_LOADED` and `_METAL_LOADED` `Ref{Bool}`s in
-[`Backend/Scheduling/DeviceRegistry.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Backend/Scheduling/DeviceRegistry.jl).
+[`Backend/Scheduling/DeviceRegistry.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Backend/Scheduling/DeviceRegistry.jl).
 
 ## Practical guidance
 

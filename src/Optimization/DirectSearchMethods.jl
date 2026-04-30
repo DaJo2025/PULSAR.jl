@@ -1,7 +1,7 @@
 """
     DirectSearchMethods.jl
 
-Derivative-free (direct-search) optimization methods for PULSAR.
+Derivative-free (direct-search) optimization methods for Pulsar.
 
 Implements three derivative-free methods that do not require gradient information:
 

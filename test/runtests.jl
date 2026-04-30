@@ -1,4 +1,4 @@
-# PULSAR.jl Test Suite
+# Pulsar.jl Test Suite
 # ====================
 # Main test runner. Executes every test group in logical order:
 #   1. Physics/mathematics foundations
@@ -9,10 +9,10 @@
 # Run from the repository root with:
 #   julia --project=. test/runtests.jl
 # or via Pkg:
-#   julia> ] test PULSAR
+#   julia> ] test Pulsar
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 
 # ---------------------------------------------------------------------------
@@ -28,7 +28,7 @@ end
 # ---------------------------------------------------------------------------
 # Top-level test set
 # ---------------------------------------------------------------------------
-@testset "PULSAR.jl Tests" begin
+@testset "Pulsar.jl Tests" begin
 
     section("Architecture – Layer Dependencies")
     include("Architecture/LayerDependencyTests.jl")

@@ -1,11 +1,11 @@
 # Quantum-computing platforms
 
-PULSAR ships first-class support for five qubit modalities, each with its own
+Pulsar ships first-class support for five qubit modalities, each with its own
 system type, native gate set, noise models, and optimization wrapper.
 
 | Platform | System type | Wrapper | Source |
 |---|---|---|---|
-| Superconducting | `TransmonSystem` | `optimcon(::TransmonSystem, ...)` | [`Application/QuantumComputing/Platforms/Superconducting.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/QuantumComputing/Platforms/Superconducting.jl) |
+| Superconducting | `TransmonSystem` | `optimcon(::TransmonSystem, ...)` | [`Application/QuantumComputing/Platforms/Superconducting.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/QuantumComputing/Platforms/Superconducting.jl) |
 | Trapped ion | `TrappedIonSystem` | `optimcon(::TrappedIonSystem, ...)` | `Platforms/TrappedIon.jl` |
 | Neutral atom | `NeutralAtomSystem` | `optimcon(::NeutralAtomSystem, ...)` | `Platforms/NeutralAtom.jl` |
 | Spin qubit (QD) | `SpinQubitSystem` | `optimcon(::SpinQubitSystem, ...)` | `Platforms/SpinQubit.jl` |
@@ -111,9 +111,9 @@ gates (X/Y/Z/H/S/T/SX, Rx/Ry/Rz/Rn/U3, CNOT/CZ/SWAP/iSWAP/SQISWAP/MS/CRx/...).
 
 | Function | Source |
 |---|---|
-| `single_qubit_gate_set`, `Rx`, `Ry`, `Rz`, `Rn`, `U3` | [`Gates/SingleQubitGates.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/QuantumComputing/Gates/SingleQubitGates.jl) |
-| `two_qubit_gate_set`, `MS_gate`, `ZZθ_gate`, `CRx_gate` | [`Gates/TwoQubitGates.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/QuantumComputing/Gates/TwoQubitGates.jl) |
-| `NativeGateSet`, `native_gate_set`, `zyz_decompose`, `zyz_sequence`, `gate_infidelity` | [`Gates/NativeGateSet.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/QuantumComputing/Gates/NativeGateSet.jl) |
+| `single_qubit_gate_set`, `Rx`, `Ry`, `Rz`, `Rn`, `U3` | [`Gates/SingleQubitGates.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/QuantumComputing/Gates/SingleQubitGates.jl) |
+| `two_qubit_gate_set`, `MS_gate`, `ZZθ_gate`, `CRx_gate` | [`Gates/TwoQubitGates.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/QuantumComputing/Gates/TwoQubitGates.jl) |
+| `NativeGateSet`, `native_gate_set`, `zyz_decompose`, `zyz_sequence`, `gate_infidelity` | [`Gates/NativeGateSet.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/QuantumComputing/Gates/NativeGateSet.jl) |
 
 ## Noise models
 
@@ -204,7 +204,7 @@ rb_ref, rb_int, epc_gate =
 | `interleaved_rb(U_gate, m; gate_fn)` | Per-gate EPC by comparing standard vs. interleaved decay |
 
 Process tomography utilities live in
-[`Verification/ProcessTomography.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/QuantumComputing/Verification/ProcessTomography.jl).
+[`Verification/ProcessTomography.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/QuantumComputing/Verification/ProcessTomography.jl).
 
 ## Common patterns
 

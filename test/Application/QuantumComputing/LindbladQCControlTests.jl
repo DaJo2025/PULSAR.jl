@@ -14,7 +14,7 @@
 #     accidentally land on a silent Hilbert-space code path.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 
 @testset "Theme 6 — LindbladQCControl skeleton" begin

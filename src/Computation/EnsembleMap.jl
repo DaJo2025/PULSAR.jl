@@ -122,7 +122,7 @@ Requires `using Distributed` and at least one worker process.
 ```julia
 using Distributed
 addprocs(4)
-@everywhere using PULSAR
+@everywhere using Pulsar
 
 strat  = DistributedEnsemble()
 result = ensemble_map_strategy(f, 1:100, strat)
@@ -283,7 +283,7 @@ function ensemble_gradient_accumulate!(
         #
         #   using Distributed
         #   addprocs(N)
-        #   @everywhere using PULSAR
+        #   @everywhere using Pulsar
         #   @everywhere include("setup.jl")   # defines per-member functions
         #
         # On a single-worker setup the call degenerates to the sequential path
@@ -321,7 +321,7 @@ function ensemble_gradient_accumulate!(
 end
 
 """
-    ensemble_map(f, iter; device=PULSAR.get_device()) → Vector{Float64}
+    ensemble_map(f, iter; device=Pulsar.get_device()) → Vector{Float64}
 
 Map `f(idx)` over every element of `iter` using device-appropriate parallelism.
 
@@ -340,14 +340,14 @@ multi-threaded CPU (GPU batching for generic kernels is provided by extensions).
 # Arguments
 - `f`      — callable, signature `f(idx) → Real`
 - `iter`   — any iterable (`eachindex(drifts)`, `1:n`, `CartesianIndices(...)`)
-- `device` — compute device symbol (default: `PULSAR.get_device()`)
+- `device` — compute device symbol (default: `Pulsar.get_device()`)
 
 # Returns
 `Vector{Float64}` with `f(idx)` for each element of `iter`, in index order.
 
 # Example
 ```julia
-PULSAR.set_device!(:cpu)    # or :metal / :cuda
+Pulsar.set_device!(:cpu)    # or :metal / :cuda
 
 function nmr_obj(θ)
     w = reshape(θ, 2, N_ts)
@@ -387,7 +387,7 @@ function ensemble_map(f, iter; device::Symbol = get_device())
             end
         else
             @warn "ensemble_map: CUDA.jl is not loaded — using CPU threads.\n" *
-                  "  Add `import CUDA` before `using PULSAR` to enable GPU dispatch."
+                  "  Add `import CUDA` before `using Pulsar` to enable GPU dispatch."
             @threadsif true for k in 1:n
                 out[k] = Float64(f(indices[k]))
             end
@@ -408,7 +408,7 @@ function ensemble_map(f, iter; device::Symbol = get_device())
             end
         else
             @warn "ensemble_map: Metal.jl is not loaded — using CPU threads.\n" *
-                  "  Add `import Metal` before `using PULSAR` to enable GPU dispatch."
+                  "  Add `import Metal` before `using Pulsar` to enable GPU dispatch."
             @threadsif true for k in 1:n
                 out[k] = Float64(f(indices[k]))
             end
@@ -451,7 +451,7 @@ so `g_out` receives the (optionally weighted) mean of per-member gradients,
 which is the exact gradient of the ensemble-averaged objective built by
 `ensemble_map`.
 
-Compatible with every gradient-based optimizer in PULSAR that accepts a
+Compatible with every gradient-based optimizer in Pulsar that accepts a
 `grad!(g, θ)` signature: `lbfgs_optimize`, `bfgs_optimize`, `adam_optimize`,
 `cg_optimize`, `grape_cg_optimize`, `grape_lbfgsb_optimize`, `krotov_optimize`,
 `newton_optimize`, and all variants in `Gradient/Generic/`.
@@ -553,7 +553,7 @@ end
         → (f::Function, grad!::Function)
 
 Convenience constructor: returns a matched `(f, grad!)` pair that computes the
-ensemble-averaged objective and gradient, ready to pass to any PULSAR optimizer.
+ensemble-averaged objective and gradient, ready to pass to any Pulsar optimizer.
 
 # Arguments
 - `f_member`      — `f_member(θ, idx) → Real`

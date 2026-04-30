@@ -1,20 +1,20 @@
 using Documenter
-using PULSAR
+using Pulsar
 
-DocMeta.setdocmeta!(PULSAR, :DocTestSetup, :(using PULSAR); recursive=true)
+DocMeta.setdocmeta!(Pulsar, :DocTestSetup, :(using Pulsar); recursive=true)
 
-const PULSAR_ROOT = normpath(joinpath(@__DIR__, ".."))
+const Pulsar_ROOT = normpath(joinpath(@__DIR__, ".."))
 
 makedocs(;
-    modules  = [PULSAR],
-    authors  = "PULSAR.jl Contributors",
-    sitename = "PULSAR.jl",
+    modules  = [Pulsar],
+    authors  = "Pulsar.jl Contributors",
+    sitename = "Pulsar.jl",
     remotes  = Dict(
-        PULSAR_ROOT => (Documenter.Remotes.GitHub("DaJo2025", "PULSAR.jl"), "main"),
+        Pulsar_ROOT => (Documenter.Remotes.GitHub("DaJo2025", "Pulsar.jl"), "main"),
     ),
     format   = Documenter.HTML(;
         prettyurls = get(ENV, "CI", "false") == "true",
-        canonical  = "https://DaJo2025.github.io/PULSAR.jl",
+        canonical  = "https://DaJo2025.github.io/Pulsar.jl",
         edit_link  = "main",
         assets     = String[],
     ),
@@ -77,7 +77,7 @@ makedocs(;
 )
 
 deploydocs(;
-    repo         = "github.com/DaJo2025/PULSAR.jl",
+    repo         = "github.com/DaJo2025/Pulsar.jl",
     devbranch    = "main",
     push_preview = true,
 )

@@ -1,7 +1,7 @@
 """
     comparisons/Drivers/pulsar_driver.jl
 
-PULSAR's own solver driver. Supports methods:
+Pulsar's own solver driver. Supports methods:
     :lbfgs   — L-BFGS with Armijo backtracking (default, recommended)
     :grape   — normalised gradient ascent
     :lbfgsb  — L-BFGS-B with Wolfe line search
@@ -12,12 +12,12 @@ The driver rebuilds the MRControl (or LindbladMRControl) with the requested
 method, runs optimcon, then re-evaluates fidelity using the canonical kernel.
 """
 
-struct PULSARDriver <: AbstractSolverDriver
+struct PulsarDriver <: AbstractSolverDriver
     method :: Symbol
 end
 
-function run_driver(driver::PULSARDriver, problem::BenchmarkProblem)
-    driver_name = "PULSAR/:$(driver.method)"
+function run_driver(driver::PulsarDriver, problem::BenchmarkProblem)
+    driver_name = "Pulsar/:$(driver.method)"
     try
         return _run_pulsar(driver.method, problem, driver_name)
     catch err
@@ -83,7 +83,7 @@ function _is_lindblad(ctrl)::Bool
 end
 
 function _reeval_fidelity(waveform::Matrix{Float64}, ctrl)::Float64
-    # Re-evaluate fidelity using the canonical PULSAR kernel.
+    # Re-evaluate fidelity using the canonical Pulsar kernel.
     if _is_lindblad(ctrl)
         fid, _ = grape_lindblad_kernel(waveform, ctrl)
     else

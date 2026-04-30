@@ -33,7 +33,7 @@ const SPINACH_CAPABILITIES = SolverCapabilities(
 )
 
 """
-    emit_spinach(ann, workdir; problem_id="PULSAR",
+    emit_spinach(ann, workdir; problem_id="Pulsar",
                     guess_seed=nothing) -> (m_script_path, waveform_output_path)
 
 Write a full Spinach .m script to `workdir`.  The optimised waveform is
@@ -42,7 +42,7 @@ columns × `n_t` rows in the **normalised** convention (already divided by
 `pwr_levels`).
 """
 function emit_spinach(ann::PhysicsAnnotation, workdir::String;
-                       problem_id::String="PULSAR",
+                       problem_id::String="Pulsar",
                        guess_seed::Union{Nothing,Int}=nothing)::Tuple{String,String}
     script_path   = joinpath(workdir, "spinach_run.m")
     waveform_path = joinpath(workdir, "spinach_result.txt")
@@ -72,13 +72,13 @@ is_broadband_single_spin(ann::PhysicsAnnotation) =
 
 function _emit_spinach_header(io::IO, ann::PhysicsAnnotation,
                                problem_id::String, seed::Int)
-    println(io, "% PULSAR benchmark $problem_id — emitted by SpinachEmitter.jl")
+    println(io, "% Pulsar benchmark $problem_id — emitted by SpinachEmitter.jl")
     println(io, "% target kind: :$(ann.target.kind)")
     println(io)
-    # Cap each MATLAB process's BLAS/compute threads via PULSAR_NCORES. We do NOT
+    # Cap each MATLAB process's BLAS/compute threads via Pulsar_NCORES. We do NOT
     # cap parpool NumWorkers here — Spinach's parfor may request a worker per
     # ensemble member (e.g. 15+ for broadband), and a tight worker cap throws.
-    println(io, "pulsar_ncores = getenv('PULSAR_NCORES');")
+    println(io, "pulsar_ncores = getenv('Pulsar_NCORES');")
     println(io, "if ~isempty(pulsar_ncores)")
     println(io, "    nc = str2double(pulsar_ncores);")
     println(io, "    if ~isnan(nc) && nc > 0")

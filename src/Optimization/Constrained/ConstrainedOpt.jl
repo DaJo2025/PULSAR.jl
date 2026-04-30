@@ -1,7 +1,7 @@
 """
     ConstrainedOptimization.jl
 
-Constrained quantum control optimization for PULSAR.jl
+Constrained quantum control optimization for Pulsar.jl
 (Pulse Design Library for Spin Control Algorithms and Rollout).
 
 Implements penalty method, augmented Lagrangian, and projection-based approaches
@@ -25,7 +25,7 @@ using Printf
 """
     AbstractConstraint
 
-Abstract supertype for all constraint types in PULSAR constrained optimization.
+Abstract supertype for all constraint types in Pulsar constrained optimization.
 Every concrete subtype must be evaluable via `constraint_violation` and
 projectable via `project_single_constraint`.
 """
@@ -737,7 +737,7 @@ end
                           constraints::Vector{<:AbstractConstraint};
                           config::ConstrainedConfig = ConstrainedConfig()) -> NamedTuple
 
-Top-level constrained optimization dispatcher for PULSAR.
+Top-level constrained optimization dispatcher for Pulsar.
 
 Selects the algorithm based on `config.constraint_method`:
 

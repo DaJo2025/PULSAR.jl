@@ -1,7 +1,7 @@
 # NMR — solution-state pulse design
 
-Solution NMR is PULSAR's most developed application domain. The MR-layer
-([`src/Application/MR/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Application/MR))
+Solution NMR is Pulsar's most developed application domain. The MR-layer
+([`src/Application/MR/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Application/MR))
 provides a high-level interface that ultimately calls the same
 `compute_grape_gradient` and `grape_lbfgsb_optimize` machinery used elsewhere.
 
@@ -185,7 +185,7 @@ result = optimcon(ctrl_L, randn(2, 200) .* 0.1)
 
 Internally this converts everything to Liouville space and calls
 `grape_lindblad_kernel` (see
-[`Physics/Lindblad.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/Lindblad.jl)).
+[`Physics/Lindblad.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/Lindblad.jl)).
 `mr_relaxation` is available for building physically-motivated jump-op
 sets from `T1`/`T2` parameters.
 
@@ -212,7 +212,7 @@ sets from `T1`/`T2` parameters.
 ## Convergence checkpointing
 
 Pass a `callback` to `MRControl` / `LindbladMRControl` to fire every
-iteration. Combine with PULSAR's unified
+iteration. Combine with Pulsar's unified
 [`Checkpoint`](../advanced/checkpointing.md) for safe long-running
 optimisations (broadband 180°, INEPT, multi-band selective).
 

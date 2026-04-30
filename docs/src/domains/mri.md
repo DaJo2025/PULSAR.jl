@@ -4,11 +4,11 @@ MRI pulse design works in the classical Bloch-vector regime: track
 magnetization `M = (Mx, My, Mz)` per isochromat / voxel rather than the
 full density matrix.
 
-PULSAR's MRI support is in
-[`src/Types/BlochSystem.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Types/BlochSystem.jl),
-[`src/Computation/BlochPropagator.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Computation/BlochPropagator.jl),
+Pulsar's MRI support is in
+[`src/Types/BlochSystem.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Types/BlochSystem.jl),
+[`src/Computation/BlochPropagator.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Computation/BlochPropagator.jl),
 and
-[`src/Application/MR/MRI/MRIOptControl.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/MR/MRI/MRIOptControl.jl).
+[`src/Application/MR/MRI/MRIOptControl.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/MR/MRI/MRIOptControl.jl).
 
 ## Building a Bloch system
 

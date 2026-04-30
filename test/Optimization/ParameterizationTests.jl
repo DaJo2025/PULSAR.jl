@@ -10,7 +10,7 @@
 #     Slepian/CRAB) throw ErrorException from each entry point.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 

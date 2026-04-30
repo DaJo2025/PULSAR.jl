@@ -2,7 +2,7 @@
 
     # ─── CUDA fallback ───────────────────────────────────────────────────────
     @testset "CUDABackend graceful fallback" begin
-        if !PULSAR._CUDA_LOADED[]
+        if !Pulsar._CUDA_LOADED[]
             # Requesting a CUDA backend without CUDA.jl should return cpu or warn.
             prev = get_device()
             try
@@ -27,7 +27,7 @@
 
     # ─── Metal fallback ──────────────────────────────────────────────────────
     @testset "MetalBackend graceful fallback" begin
-        if !PULSAR._METAL_LOADED[]
+        if !Pulsar._METAL_LOADED[]
             prev = get_device()
             try
                 local caught = false

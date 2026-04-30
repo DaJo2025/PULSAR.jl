@@ -1,11 +1,11 @@
 # Uncertainty quantification & sensitivity
 
-PULSAR provides post-hoc analysis tools for understanding how robust an
+Pulsar provides post-hoc analysis tools for understanding how robust an
 optimized pulse is — both globally (UQ) and per-parameter (sensitivity).
 
 ## Uncertainty quantification (UQ)
 
-Source: [`src/Physics/UncertaintyQuantification.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/UncertaintyQuantification.jl).
+Source: [`src/Physics/UncertaintyQuantification.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/UncertaintyQuantification.jl).
 
 ```julia
 uq_cfg = UQConfig(
@@ -31,7 +31,7 @@ than the optimization saw.
 
 ## Sensitivity analysis
 
-Source: [`src/Physics/Sensitivity.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/Sensitivity.jl).
+Source: [`src/Physics/Sensitivity.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/Sensitivity.jl).
 
 ```julia
 sens_cfg = SensitivityConfig(
@@ -79,4 +79,4 @@ auto_optimize(sys, target, ctrl)        # uses rec internally
 println(describe_recommendation(rec))
 ```
 
-See [`Runtime/AlgorithmSelection.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Runtime/AlgorithmSelection.jl).
+See [`Runtime/AlgorithmSelection.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Runtime/AlgorithmSelection.jl).

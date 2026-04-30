@@ -12,7 +12,7 @@ using Random
 """
     AbstractQuantumSystem
 
-Abstract supertype for all quantum systems in PULSAR. Every concrete subtype
+Abstract supertype for all quantum systems in Pulsar. Every concrete subtype
 must expose the fields:
 
   - `H_drift  :: Matrix{ComplexF64}` — time-independent drift Hamiltonian (rad/s)
@@ -25,7 +25,7 @@ abstract type AbstractQuantumSystem end
 """
     AbstractOptimizationContext
 
-Abstract supertype for all PULSAR optimal-control problem specifications.
+Abstract supertype for all Pulsar optimal-control problem specifications.
 Concrete subtypes store the system, target, algorithm settings, and
 (optionally) the initial waveform in a single object so that the unified
 dispatch `optimcon(ctx)` can route to the correct solver without the

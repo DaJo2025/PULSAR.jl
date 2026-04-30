@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Propagator dispatch hierarchy (Theme 1)
+# Pulsar.jl — Propagator dispatch hierarchy (Theme 1)
 # ============================================================
 #
 # Pluggable single-step propagator backends.  The legacy 2-arg
@@ -41,7 +41,7 @@ abstract type AbstractPropagator end
 
 Hermitian eigendecomposition `H = V diag(λ) V†` with
 `U = V diag(exp(-i λ dt)) V†`.  Exact for Hermitian `H`, cost `O(d³)`,
-machine-precision unitarity.  This is the legacy PULSAR default.
+machine-precision unitarity.  This is the legacy Pulsar default.
 """
 struct EigenPropagator <: AbstractPropagator end
 

@@ -1,7 +1,7 @@
 """
     SecondOrderMethods.jl
 
-Quasi-Newton and Newton second-order optimization methods for PULSAR.
+Quasi-Newton and Newton second-order optimization methods for Pulsar.
 
 Implements three methods:
 

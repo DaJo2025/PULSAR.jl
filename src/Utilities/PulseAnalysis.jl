@@ -7,7 +7,7 @@
 # over offset and drive-amplitude perturbations.
 #
 # Pure post-processing: no dependency on the optimiser internals beyond what
-# is already exported by PULSAR.
+# is already exported by Pulsar.
 # ============================================================================
 
 using LinearAlgebra
@@ -23,7 +23,7 @@ using Statistics
 Per-channel FFT magnitude spectrum of a control waveform.
 
 # Arguments
-- `w  :: AbstractMatrix{<:Real}` — `[n_ctrl × n_t]` (PULSAR convention) or
+- `w  :: AbstractMatrix{<:Real}` — `[n_ctrl × n_t]` (Pulsar convention) or
                                    `[n_t × n_ctrl]`.  The longer axis is
                                    treated as time.
 - `dt :: Real`                   — time-step duration (s).

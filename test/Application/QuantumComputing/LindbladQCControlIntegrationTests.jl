@@ -10,7 +10,7 @@
 # X-rotation problem.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 

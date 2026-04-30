@@ -13,7 +13,7 @@
 #                                     algorithm silently disguised as another.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 
@@ -33,7 +33,7 @@ function _hard_pulse_unitary(flip_deg::Real, phase_deg::Real)
     return exp(-im * θ * H)
 end
 
-function _composite_unitary(segs::Vector{PULSAR.CompositePulseSegment})
+function _composite_unitary(segs::Vector{Pulsar.CompositePulseSegment})
     U = Matrix{ComplexF64}(I, 2, 2)
     for s in segs
         U = _hard_pulse_unitary(s.flip_deg, s.phase_deg) * U
@@ -115,7 +115,7 @@ _gate_infidelity(U, V) = 1.0 - abs(tr(V' * U))^2 / 4.0
         # exported path works end-to-end.
         @test_throws InvariantViolationError begin
             ok, msg = check_bfgs_curvature([1.0, 0.0], [-1.0, 0.0])
-            PULSAR._assert_invariant(ok, msg, :bfgs_curvature, (; iter=0))
+            Pulsar._assert_invariant(ok, msg, :bfgs_curvature, (; iter=0))
         end
     end
 

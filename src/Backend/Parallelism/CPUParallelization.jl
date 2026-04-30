@@ -1,7 +1,7 @@
 """
     CPUParallelization.jl
 
-Three orthogonal CPU parallelisation strategies for PULSAR.jl:
+Three orthogonal CPU parallelisation strategies for Pulsar.jl:
 
 1. **Task-based parallelisation** (`TaskParallelizationStrategy`) – divides
    work into chunks assigned to Julia threads via `Threads.@threads`.
@@ -22,7 +22,7 @@ end
 # ---------------------------------------------------------------------------
 # Helper: import CPUBackend types when used stand-alone
 # ---------------------------------------------------------------------------
-# (When loaded via PULSAR's module system CPUBackend is already in scope.)
+# (When loaded via Pulsar's module system CPUBackend is already in scope.)
 
 # ===========================================================================
 # Conditional threading macro (Lessons 1 + 7)
@@ -40,7 +40,7 @@ prevents oversubscription when threaded outer loops contain BLAS-heavy
 inner work — a recurring footgun in nested-parallelism settings (see
 Krotov.jl `threadpoolctl(1, "blas")` for the same pattern).
 
-Pattern adapted from QuantumControl.jl `conditionalthreads.jl`; PULSAR adds
+Pattern adapted from QuantumControl.jl `conditionalthreads.jl`; Pulsar adds
 the BLAS-thread guard.
 
 # Example

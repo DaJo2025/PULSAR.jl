@@ -1,7 +1,7 @@
 """
     PerformanceMonitoring.jl
 
-Runtime performance monitoring and profiling utilities for PULSAR optimizations.
+Runtime performance monitoring and profiling utilities for Pulsar optimizations.
 
 Provides a lightweight `PerformanceMonitor` struct that accumulates per-iteration
 diagnostics (fidelity, gradient norm, wall-clock time, memory usage) and exposes
@@ -39,7 +39,7 @@ using Printf
     PerformanceMonitor
 
 Mutable container that accumulates per-iteration performance data during
-a PULSAR optimization run.
+a Pulsar optimization run.
 
 # Fields
 - `start_time::Float64`                — `time()` value at construction
@@ -324,7 +324,7 @@ function print_summary(monitor::PerformanceMonitor)
 
     println()
     println("=" ^ 60)
-    println("  PULSAR Optimization Performance Summary")
+    println("  Pulsar Optimization Performance Summary")
     println("=" ^ 60)
 
     @printf("  Total wall time : %.3f s\n",  s["total_time_seconds"])

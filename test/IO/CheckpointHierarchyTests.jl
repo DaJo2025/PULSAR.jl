@@ -8,7 +8,7 @@
 #     so existing checkpoint files keep loading after consolidation.
 
 using Test
-using PULSAR
+using Pulsar
 using Serialization: serialize
 
 @testset "Unified Checkpoint" begin
@@ -72,7 +72,7 @@ using Serialization: serialize
     end
 
     @testset "load_checkpoint auto-converts legacy MR/QC payloads" begin
-        mr = PULSAR.MRCheckpoint(copy(w_opt), F_opt, 50, 2, 25e3, 5e-3,
+        mr = Pulsar.MRCheckpoint(copy(w_opt), F_opt, 50, 2, 25e3, 5e-3,
                                   "2026-04-29T00:00:00",
                                   Dict{String,Any}("source" => "legacy"))
         fp = tempname() * ".jls"
@@ -85,7 +85,7 @@ using Serialization: serialize
         @test loaded.metadata["source"] == "legacy"
         rm(fp)
 
-        qc = PULSAR.QCCheckpoint(copy(w_opt), F_opt, 50, 2, 200e6, 5e-8,
+        qc = Pulsar.QCCheckpoint(copy(w_opt), F_opt, 50, 2, 200e6, 5e-8,
                                   :transmon, "2026-04-29T00:00:00",
                                   Dict{String,Any}())
         fp = tempname() * ".jls"

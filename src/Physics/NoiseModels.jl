@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Unified noise / ensemble abstraction (Theme 5)
+# Pulsar.jl — Unified noise / ensemble abstraction (Theme 5)
 # ============================================================
 #
 # Collapses the three side-by-side noise architectures
@@ -96,7 +96,7 @@ end
     PowderOrientation(euler_grid, weights)
 
 Crystallite-orientation ensemble for solid-state NMR / EPR powder samples.
-Equivalent to Spinach's `ensemble.m` powder grids and to PULSAR's MAS
+Equivalent to Spinach's `ensemble.m` powder grids and to Pulsar's MAS
 `orientations` field.
 
 # Fields

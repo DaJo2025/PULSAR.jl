@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Checkpoint and Resume
+# Pulsar.jl — Checkpoint and Resume
 # Pulse Design Library for Spin Control Algorithms and Rollout
 # ============================================================
 #
@@ -11,7 +11,7 @@
 # `Serialization` (.jls) only.
 #
 # `MRCheckpoint` and `QCCheckpoint` are retained as private structs
-# (not exported) so existing `.jls` files written by earlier PULSAR
+# (not exported) so existing `.jls` files written by earlier Pulsar
 # versions still deserialise; `load_checkpoint` auto-converts them
 # to `Checkpoint` on read.
 # ============================================================
@@ -25,7 +25,7 @@ using Dates, LinearAlgebra, Printf, Serialization
 """
     AbstractCheckpoint
 
-Supertype for PULSAR checkpoint snapshots.  The concrete subtype is
+Supertype for Pulsar checkpoint snapshots.  The concrete subtype is
 [`Checkpoint`](@ref).
 """
 abstract type AbstractCheckpoint end
@@ -182,7 +182,7 @@ end
 
 Load a checkpoint from disk via Julia `Serialization`.  If the
 deserialised payload is a legacy `MRCheckpoint` or `QCCheckpoint`
-(written by an earlier PULSAR release), it is auto-converted to a
+(written by an earlier Pulsar release), it is auto-converted to a
 [`Checkpoint`](@ref).
 """
 function load_checkpoint(filepath::String)::Checkpoint

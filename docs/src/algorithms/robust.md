@@ -2,8 +2,8 @@
 
 Real systems suffer parameter drift (B0, B1, T2, J-couplings) and pulses
 must remain high-fidelity across the resulting parameter ensemble.
-PULSAR's `robust_optimize` (in
-[`src/Optimization/Robust/RobustOpt.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Robust/RobustOpt.jl))
+Pulsar's `robust_optimize` (in
+[`src/Optimization/Robust/RobustOpt.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Robust/RobustOpt.jl))
 optimizes a chosen aggregate of fidelities over a parametric ensemble.
 
 ## API
@@ -74,7 +74,7 @@ F_avg    = ensemble_fidelity(sys, ctrl_opt, target;
 ## QC platform-specific noise models
 
 For superconducting / trapped-ion / neutral-atom systems, the
-[`Application/QuantumComputing/NoiseModels/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Application/QuantumComputing/NoiseModels)
+[`Application/QuantumComputing/NoiseModels/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Application/QuantumComputing/NoiseModels)
 helpers provide `QuasiStaticNoise`, `MarkovianNoise`, and
 `NoiseSpectrum` types that integrate directly with `robust_optimcon_qs`,
 `lindblad_optimcon`, and `optimcon_ff` (filter function) wrappers.

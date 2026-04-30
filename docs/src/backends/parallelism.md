@@ -1,7 +1,7 @@
 # Parallelism
 
-PULSAR exposes two orthogonal CPU parallelism strategies, defined in
-[`src/Backend/Parallelism/CPUParallelization.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Backend/Parallelism/CPUParallelization.jl).
+Pulsar exposes two orthogonal CPU parallelism strategies, defined in
+[`src/Backend/Parallelism/CPUParallelization.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Backend/Parallelism/CPUParallelization.jl).
 
 ## Task-level parallelism
 
@@ -46,7 +46,7 @@ For multi-node sweeps:
 ```julia
 using Distributed
 addprocs(8)
-@everywhere using PULSAR
+@everywhere using Pulsar
 # … then drive ensemble work across workers
 ```
 
@@ -55,7 +55,7 @@ when CUDA / Metal devices are also present.
 
 ## Performance monitoring
 
-`PerformanceMonitor` ([`Runtime/PerformanceMonitoring.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Runtime/PerformanceMonitoring.jl)) records per-iteration
+`PerformanceMonitor` ([`Runtime/PerformanceMonitoring.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Runtime/PerformanceMonitoring.jl)) records per-iteration
 wall time, gradient norm, fidelity, and memory usage. Wire it through the
 `callback` keyword on any optimizer:
 

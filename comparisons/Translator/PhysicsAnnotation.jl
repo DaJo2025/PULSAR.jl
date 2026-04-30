@@ -6,7 +6,7 @@ Solver-agnostic physical description of a benchmark problem.
 Emitters for Spinach / QuTiP / SIMPSON / Krotov / qopt / Quandary consume a
 `PhysicsAnnotation` and produce idiomatic native scripts in each target
 program's own language. Round-trip: `build_ctrl_from_annotation(ann)` rebuilds
-the matrix form (`MRControl` / `LindbladMRControl`) that PULSAR uses for
+the matrix form (`MRControl` / `LindbladMRControl`) that Pulsar uses for
 canonical re-evaluation via `grape_state_kernel` / `grape_lindblad_kernel`.
 
 The annotation captures what a human uses when writing a Spinach / QuTiP /
@@ -142,7 +142,7 @@ Base.@kwdef struct PhysicsAnnotation <: AbstractPhysicsAnnotation
     b0_tesla      :: Float64                              = 14.1
 end
 
-# ─── Builders (Annotation → PULSAR matrix types) ──────────────────────────────
+# ─── Builders (Annotation → Pulsar matrix types) ──────────────────────────────
 
 """
     isotopes_vec(ann) -> Vector{String}
@@ -156,7 +156,7 @@ n_spins(ann::PhysicsAnnotation) = length(ann.spins)
 """
     build_mr_system(ann) -> MRSpinSystem
 
-Construct the PULSAR `MRSpinSystem` described by `ann`.
+Construct the Pulsar `MRSpinSystem` described by `ann`.
 """
 build_mr_system(ann::PhysicsAnnotation)::MRSpinSystem = mr_system(isotopes_vec(ann))
 
@@ -292,7 +292,7 @@ end
 """
     build_ctrl_from_annotation(ann; kwargs...) -> MRControl or LindbladMRControl
 
-Reconstruct the PULSAR matrix-form control object from the annotation.  Used
+Reconstruct the Pulsar matrix-form control object from the annotation.  Used
 by round-trip tests and by `QuantumControlEmitter` (which stays in Julia).
 Extra `kwargs` are forwarded to the `MRControl` / `LindbladMRControl` keyword
 constructor (e.g. `verbose=false`).

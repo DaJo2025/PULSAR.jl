@@ -8,7 +8,7 @@
 #   - Infeasible / very-tight constraint handling
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 using Statistics: mean
@@ -133,7 +133,7 @@ end
 
         # After optimization with a bandwidth constraint, the per-step
         # control amplitude should be bounded by `BW_max = f_max * dt`.
-        # The PULSAR `BandwidthConstraint` projects via amplitude clamping,
+        # The Pulsar `BandwidthConstraint` projects via amplitude clamping,
         # which limits the per-step jump and therefore the highest spectral
         # content the discrete waveform can carry.
         sys    = _c_qubit_sys()

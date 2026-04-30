@@ -1,7 +1,7 @@
 # Second-order methods
 
 Second-order methods exploit curvature information (Hessian or quasi-Hessian)
-for faster local convergence near a minimum. PULSAR ships generic and
+for faster local convergence near a minimum. Pulsar ships generic and
 QOC-specialized variants.
 
 ## BFGS / L-BFGS
@@ -11,9 +11,9 @@ gradient evaluations.
 
 | Function | Source |
 |---|---|
-| `bfgs_optimize` | [`src/Optimization/SecondOrder/SecondOrderMethods.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/SecondOrder/SecondOrderMethods.jl) |
+| `bfgs_optimize` | [`src/Optimization/SecondOrder/SecondOrderMethods.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/SecondOrder/SecondOrderMethods.jl) |
 | `lbfgs_optimize` | same |
-| `lbfgsb_optimize` | [`src/Optimization/Gradient/Generic/QuasiNewton.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Gradient/Generic/QuasiNewton.jl) |
+| `lbfgsb_optimize` | [`src/Optimization/Gradient/Generic/QuasiNewton.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Gradient/Generic/QuasiNewton.jl) |
 
 `BFGSConfig` / `LBFGSConfig` carry the standard knobs (memory length, line-search
 type, convergence tolerances). L-BFGS-B adds box constraints `[l, u]` per
@@ -38,7 +38,7 @@ trust-region tailored to the GRAPE landscape):
 
 | Function | Source |
 |---|---|
-| `oc_trust_region_newton_optimize` | [`src/Optimization/Gradient/QOC/HighOrderOC.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Gradient/QOC/HighOrderOC.jl) |
+| `oc_trust_region_newton_optimize` | [`src/Optimization/Gradient/QOC/HighOrderOC.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Gradient/QOC/HighOrderOC.jl) |
 | `oc_semismooth_newton_optimize` | same |
 
 These wrap the GRAPE gradient with QOC-specific Hessian models.
@@ -92,7 +92,7 @@ result = grape_lbfgsb_optimize(
 The extra-thin `lbfgsb_optimize` wrapper accepts `use_native = true` to
 delegate to the `LBFGSB.jl` Fortran backend; install it with
 `pkg> add LBFGSB`. With `use_native = false` (the default if `LBFGSB.jl`
-is not loaded) PULSAR uses its own pure-Julia bound-projected L-BFGS.
+is not loaded) Pulsar uses its own pure-Julia bound-projected L-BFGS.
 
 In MR / QC application code, the higher-level convenience wrapper
 `grape_lbfgsb_optimize` is invoked indirectly through

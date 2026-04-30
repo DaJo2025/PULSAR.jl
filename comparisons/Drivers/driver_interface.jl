@@ -27,7 +27,7 @@ abstract type AbstractSolverDriver end
 Result returned by every solver driver for a single (driver, problem) pair.
 
 # Fields
-- `driver_name`      — e.g. `"PULSAR/:lbfgs"` or `"QuantumControl/GRAPE"`
+- `driver_name`      — e.g. `"Pulsar/:lbfgs"` or `"QuantumControl/GRAPE"`
 - `problem_id`       — matches `BenchmarkProblem.id`, e.g. `"BM01"`
 - `fidelity`         — final ensemble-averaged fidelity ∈ [0,1]
 - `wall_time_s`      — total wall-clock time in seconds

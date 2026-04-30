@@ -3,7 +3,7 @@
 # ============================================================================
 # Generic ensemble-objective wrapper.
 #
-# Unifies PULSAR's four pre-existing ensemble mechanisms (`grape_optimize_ensemble`,
+# Unifies Pulsar's four pre-existing ensemble mechanisms (`grape_optimize_ensemble`,
 # `robust_optimize`, MR kernels, QC quasi-static noise) behind a single type that
 # produces closures compatible with every generic optimizer — gradient or
 # derivative-free — in the library.
@@ -313,11 +313,11 @@ end
 """
     ensemble_wrap(obj) -> (f, grad!)
 
-Return a `(f, grad!)` pair suitable for PULSAR's `(f, grad!, θ₀)` optimizers
+Return a `(f, grad!)` pair suitable for Pulsar's `(f, grad!, θ₀)` optimizers
 (L-BFGS, BFGS, CG, Adam, Newton, trust-region, L-BFGS-B, etc.). Every call to
 `grad!(gv, θ)` also fills `gv`, so one pass computes F and ∇F together.
 
-Convention (PULSAR-wide): these optimizers *minimize* their objective. The
+Convention (Pulsar-wide): these optimizers *minimize* their objective. The
 wrappers therefore return `-F` and `-∇F` so callers can feed the result into a
 minimizer to maximize fidelity — mirroring the historical inversion used by
 `grape_optimize` and `robust_optimize`.

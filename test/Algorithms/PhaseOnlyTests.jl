@@ -2,7 +2,7 @@
 # Exercises the parameterization wired into MR optimcon and the QC GRAPE path.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Statistics
 using Random

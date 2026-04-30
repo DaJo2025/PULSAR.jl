@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Algorithm Routing Registry (Theme 8)
+# Pulsar.jl — Algorithm Routing Registry (Theme 8)
 # ============================================================
 #
 # Central registry mapping optimizer names → callables and capability
@@ -194,7 +194,7 @@ is_registered(name::Symbol)::Bool = haskey(OPTIMIZER_REGISTRY, name)
 # ─────────────────────────────────────────────────────────────────────────────
 # Built-in registrations
 # ─────────────────────────────────────────────────────────────────────────────
-# These describe the optimizer entry points that already exist in PULSAR.
+# These describe the optimizer entry points that already exist in Pulsar.
 # Each module owns its registration (callable + supports descriptor); this
 # block populates the registry with the canonical names used by
 # `recommend_optimizer` / `auto_optimize` / `_optimcon_generic`.

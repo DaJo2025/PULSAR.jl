@@ -31,11 +31,11 @@ const QUTIP_CAPABILITIES = SolverCapabilities(
 )
 
 """
-    emit_qutip(ann, workdir; problem_id="PULSAR",
+    emit_qutip(ann, workdir; problem_id="Pulsar",
                  guess_seed=nothing) -> (script_path, waveform_path)
 """
 function emit_qutip(ann::PhysicsAnnotation, workdir::String;
-                      problem_id::String="PULSAR",
+                      problem_id::String="Pulsar",
                       guess_seed::Union{Nothing,Int}=nothing)::Tuple{String,String}
     script_path   = joinpath(workdir, "qutip_run.py")
     waveform_path = joinpath(workdir, "qutip_shape.txt")
@@ -55,7 +55,7 @@ function _emit_qutip_script(io::IO, ann::PhysicsAnnotation,
     n_ctrl  = length(ann.controls)
     n_t     = ann.n_time_steps
 
-    println(io, "# PULSAR benchmark $problem_id — emitted by QuTiPEmitter.jl")
+    println(io, "# Pulsar benchmark $problem_id — emitted by QuTiPEmitter.jl")
     println(io)
     println(io, "import numpy as np")
     println(io, "import qutip")
@@ -143,7 +143,7 @@ function _emit_qutip_script(io::IO, ann::PhysicsAnnotation,
     println(io)
 
     # State builders
-    println(io, "# State builders — map PULSAR single-spin symbols to QuTiP states")
+    println(io, "# State builders — map Pulsar single-spin symbols to QuTiP states")
     println(io, "def single_state(sym):")
     println(io, "    table = {")
     println(io, "      'Iz':  qutip.basis(2, 0),")

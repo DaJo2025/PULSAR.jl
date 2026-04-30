@@ -2,7 +2,7 @@
 
 Closed-form pulse families that achieve targeted fidelities by construction —
 no iterative optimization needed. Source:
-[`src/Optimization/Analytic/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Optimization/Analytic).
+[`src/Optimization/Analytic/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Optimization/Analytic).
 
 ## Composite pulses
 
@@ -34,13 +34,13 @@ pulse = drag_pulse(amplitude, duration; α=anharmonicity)
 
 ## Shortcuts to adiabaticity (STA)
 
-`sta_fourier_1d` ([`src/Optimization/Analytic/STA.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Analytic/STA.jl))
+`sta_fourier_1d` ([`src/Optimization/Analytic/STA.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Analytic/STA.jl))
 returns 1-D Fourier-basis shortcuts for adiabatic-like state transfer.
 
 ## SLR
 
 Shinnar–Le Roux pulse design for MRI selective excitation
-([`src/Optimization/Analytic/SLR.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Analytic/SLR.jl)).
+([`src/Optimization/Analytic/SLR.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Analytic/SLR.jl)).
 
 ```julia
 pulse = slr_1d(bandwidth_hz, duration_s; ripple, ...)
@@ -50,7 +50,7 @@ pulse = slr_1d(bandwidth_hz, duration_s; ripple, ...)
 
 Variable-rate selective excitation. Reshapes an existing pulse to satisfy a
 peak-amplitude or acoustic-noise constraint while preserving slice profile
-([`src/Optimization/Analytic/VERSE.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Analytic/VERSE.jl)).
+([`src/Optimization/Analytic/VERSE.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Analytic/VERSE.jl)).
 
 | Function | Use |
 |---|---|

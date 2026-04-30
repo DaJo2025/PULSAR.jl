@@ -1,16 +1,16 @@
 # ============================================================
-# PULSAR.jl — Visualization Utilities
+# Pulsar.jl — Visualization Utilities
 # Pulse Design Library for Spin Control Algorithms and Rollout
 # ============================================================
 #
-# Stub implementations. Real implementations are in ext/PULSARPlotsExt.jl,
+# Stub implementations. Real implementations are in ext/PulsarPlotsExt.jl,
 # loaded automatically by Julia 1.9+ when Plots.jl is in the environment.
 # ============================================================
 
 _ext_plots_error() = error(
     "Plots.jl is required for visualization.\n" *
-    "Add it to your environment: `using Plots, PULSAR`. " *
-    "The PULSARPlotsExt extension will activate automatically.")
+    "Add it to your environment: `using Plots, Pulsar`. " *
+    "The PulsarPlotsExt extension will activate automatically.")
 
 # ──────────────────────────────────────────────────────────────
 # Convergence plot
@@ -20,7 +20,7 @@ _ext_plots_error() = error(
     plot_convergence(result; show_gradient_norm, log_scale, title, save_path)
 
 Plot fidelity (and optionally gradient norm) vs iteration. Requires Plots.jl.
-Returns a `Plots.Plot` object (via PULSARPlotsExt when Plots is loaded).
+Returns a `Plots.Plot` object (via PulsarPlotsExt when Plots is loaded).
 """
 function plot_convergence(result; kwargs...)
     _ext_plots_error()
@@ -119,7 +119,7 @@ function create_optimization_report(
 )
     open(output_path, "w") do io
         println(io, "="^60)
-        println(io, "PULSAR.jl Optimization Report")
+        println(io, "Pulsar.jl Optimization Report")
         println(io, "Pulse Design Library for Spin Control Algorithms and Rollout")
         println(io, "="^60)
         println(io, "Generated: $(now())")

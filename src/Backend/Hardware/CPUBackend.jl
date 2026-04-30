@@ -1,7 +1,7 @@
 """
     CPUBackend.jl
 
-CPU backend for PULSAR.jl with multi-threading and BLAS/LAPACK support.
+CPU backend for Pulsar.jl with multi-threading and BLAS/LAPACK support.
 Provides matrix multiplication, matrix exponentials, and batch propagator
 computation using Julia's built-in threading and LinearAlgebra facilities.
 """

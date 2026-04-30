@@ -1,20 +1,20 @@
 """
     comparisons/run_comparisons.jl
 
-Top-level entry point for the PULSAR cross-package optimal control benchmark.
+Top-level entry point for the Pulsar cross-package optimal control benchmark.
 
 Usage:
     julia --project=. comparisons/run_comparisons.jl
     julia --project=. comparisons/run_comparisons.jl --problems P_BB180,P_INEPT
-    julia --project=. comparisons/run_comparisons.jl --packages PULSAR,QuantumControl
-    julia --project=. comparisons/run_comparisons.jl --problems P_BB180 --packages PULSAR
+    julia --project=. comparisons/run_comparisons.jl --packages Pulsar,QuantumControl
+    julia --project=. comparisons/run_comparisons.jl --problems P_BB180 --packages Pulsar
 
 CLI flags:
     --problems  <comma-separated list of problem IDs>   (default: all)
     --packages  <comma-separated list of packages> (default: all)
 
 Available packages / driver names:
-    PULSAR_lbfgs, PULSAR_cmaes, PULSAR_grape, PULSAR_lbfgsb, PULSAR_cg
+    Pulsar_lbfgs, Pulsar_cmaes, Pulsar_grape, Pulsar_lbfgsb, Pulsar_cg
     QuantumControl, Krotov, QuTiP, qopt, Spinach, SIMPSON, Quandary
 """
 
@@ -40,7 +40,7 @@ function _parse_args(args)
     return requested_problems, requested_packages
 end
 
-# ─── Load PULSAR ──────────────────────────────────────────────────────────────
+# ─── Load Pulsar ──────────────────────────────────────────────────────────────
 
 # Ensure we're loading from the package root
 _pulsar_root = dirname(dirname(@__FILE__))
@@ -48,7 +48,7 @@ if !in(_pulsar_root, LOAD_PATH)
     push!(LOAD_PATH, _pulsar_root)
 end
 
-using PULSAR
+using Pulsar
 using Random
 using Printf
 using Dates
@@ -82,11 +82,11 @@ include(joinpath(_COMPARISONS_DIR, "Report", "report.jl"))
 # ─── Driver registry ─────────────────────────────────────────────────────────
 
 @isdefined(ALL_DRIVERS) || (const ALL_DRIVERS = Dict{String, AbstractSolverDriver}(
-    "PULSAR_lbfgs"     => PULSARDriver(:lbfgs),
-    "PULSAR_cmaes"     => PULSARDriver(:cmaes),
-    "PULSAR_grape"     => PULSARDriver(:grape),
-    "PULSAR_lbfgsb"    => PULSARDriver(:lbfgsb),
-    "PULSAR_cg"        => PULSARDriver(:cg),
+    "Pulsar_lbfgs"     => PulsarDriver(:lbfgs),
+    "Pulsar_cmaes"     => PulsarDriver(:cmaes),
+    "Pulsar_grape"     => PulsarDriver(:grape),
+    "Pulsar_lbfgsb"    => PulsarDriver(:lbfgsb),
+    "Pulsar_cg"        => PulsarDriver(:cg),
     "QuantumControl"   => QuantumControlDriver(),
     "Krotov"           => KrotovDriver(),
     "QuTiP"            => QuTiPDriver(),
@@ -134,7 +134,7 @@ function main()
 
     # ── Print run header ──────────────────────────────────────────────────────
     println()
-    println("  PULSAR Cross-Package Optimal Control Benchmark")
+    println("  Pulsar Cross-Package Optimal Control Benchmark")
     println("  Pulse Design Library for Spin Control Algorithms and Rollout")
     println("  Date: $(Dates.format(now(), "yyyy-mm-dd HH:MM:SS"))")
     println("  Julia $(VERSION)  |  $(Threads.nthreads()) thread(s)")

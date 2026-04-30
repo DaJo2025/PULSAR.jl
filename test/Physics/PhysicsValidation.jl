@@ -5,7 +5,7 @@
 # independently derived with pencil and paper.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 
@@ -259,7 +259,7 @@ const _I2  = ComplexF64[1 0; 0 1]
         exp_Sz_H_before = real(ψ_init' * Sz_H * ψ_init)
         @test exp_Sz_H_before > 0.0   # initial H magnetization is positive
 
-        # Verify PULSAR can optimize toward the analytical INEPT propagator.
+        # Verify Pulsar can optimize toward the analytical INEPT propagator.
         # operator_target requires a unitary; Sz_C is Hermitian-not-unitary,
         # so we use unitary_target(U_INEPT) — the analytic gate above.
         target_INEPT = unitary_target(U_INEPT)
@@ -335,12 +335,12 @@ const _I2  = ComplexF64[1 0; 0 1]
         # Lindblad-space evolution with zero decay rates
         L_ops  = [_σ_x, _σ_z]            # arbitrary jump operators
         γ_zero = [0.0, 0.0]              # switched off
-        𝓛_drift = PULSAR.build_drift_liouvillian(H_d, L_ops, γ_zero)
-        𝓛_ctrls = [PULSAR.build_control_liouvillian(Hk) for Hk in H_c]
+        𝓛_drift = Pulsar.build_drift_liouvillian(H_d, L_ops, γ_zero)
+        𝓛_ctrls = [Pulsar.build_control_liouvillian(Hk) for Hk in H_c]
         𝓛_tot   = 𝓛_drift .+ amps[1] .* 𝓛_ctrls[1] .+ amps[2] .* 𝓛_ctrls[2]
         U_super = exp(𝓛_tot .* t)
-        vec_ρ   = U_super * PULSAR.vec_rho(ρ0)
-        ρ_liouv = PULSAR.mat_rho(vec_ρ, 2)
+        vec_ρ   = U_super * Pulsar.vec_rho(ρ0)
+        ρ_liouv = Pulsar.mat_rho(vec_ρ, 2)
 
         @test norm(ρ_liouv - ρ_closed) < 1e-10
 

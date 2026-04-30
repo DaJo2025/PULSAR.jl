@@ -27,7 +27,7 @@ using Random
 Build an [`EnsembleObjective`](@ref) for robust optimization by perturbing
 a **single** nominal `system`. Replaces the hand-rolled optimizer body in
 [`robust_optimize`](@ref) — produces the same ensemble mean / worst-case / CVaR
-sample statistics but lets any PULSAR optimizer take the outer step.
+sample statistics but lets any Pulsar optimizer take the outer step.
 
 # Arguments
 - `uncertainty_type` — `:parametric` (Hermitian ΔH added to drift) or

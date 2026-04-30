@@ -598,7 +598,7 @@ infidelity(U_total::Matrix{ComplexF64}, target::QuantumTarget)::Float64 =
     1.0 - compute_fidelity(U_total, target)
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Legacy API — backward compatibility with existing PULSAR Core code
+# Legacy API — backward compatibility with existing Pulsar Core code
 # ═══════════════════════════════════════════════════════════════════════════════
 
 """

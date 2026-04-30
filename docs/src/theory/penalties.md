@@ -1,14 +1,14 @@
 # Penalty functions
 
-Optimizers in PULSAR maximize fidelity subject to soft constraints expressed
+Optimizers in Pulsar maximize fidelity subject to soft constraints expressed
 as additive penalties on the control waveform. Penalties live in
-[`src/Physics/Penalties.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/Penalties.jl)
+[`src/Physics/Penalties.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/Penalties.jl)
 and subtype `AbstractPenalty`.
 
 ## Built-in penalties
 
 All five live in
-[`src/Physics/Penalties.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/Penalties.jl)
+[`src/Physics/Penalties.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/Penalties.jl)
 and subtype `AbstractPenalty`. The penalty constructor takes the weight as
 the **first positional** argument.
 
@@ -47,7 +47,7 @@ result = grape_optimize(sys, target, ctrl;
                         penalty_grad_fns = make_penalty_grad_fns(penalties))
 ```
 
-PULSAR's analytic-gradient kernels also support analytic penalty gradients —
+Pulsar's analytic-gradient kernels also support analytic penalty gradients —
 each built-in penalty provides a `∇p(w)` method that the GRAPE backward pass
 consumes alongside the fidelity gradient.
 

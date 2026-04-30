@@ -42,7 +42,7 @@ Write a complete SIMPSON `.in` script to `workdir`.  The shape is written to
 per time step.  Waveform units: `:hz` (driver normalises by `pwr_max_hz`).
 """
 function emit_simpson(ann::PhysicsAnnotation, workdir::String;
-                       problem_id::String="PULSAR")::Tuple{String,String}
+                       problem_id::String="Pulsar")::Tuple{String,String}
     script_path       = joinpath(workdir, "grape.in")
     shape_output_path = joinpath(workdir, "shape.txt")
 
@@ -63,9 +63,9 @@ end
 
 function _emit_simpson_header(io::IO, ann::PhysicsAnnotation,
                                problem_id::String, shape_out::String)
-    println(io, "# PULSAR benchmark $problem_id — emitted by SIMPSONEmitter.jl")
+    println(io, "# Pulsar benchmark $problem_id — emitted by SIMPSONEmitter.jl")
     println(io)
-    println(io, "set PULSAR_OUT \"$(escape_string(shape_out))\"")
+    println(io, "set Pulsar_OUT \"$(escape_string(shape_out))\"")
     println(io)
 end
 
@@ -200,7 +200,7 @@ end
 function _emit_simpson_main(io::IO, ann::PhysicsAnnotation)
     pwr_hz = ann.controls[1].pwr_max_hz
     println(io, "proc main {} {")
-    println(io, "    global par rfsh PULSAR_OUT")
+    println(io, "    global par rfsh Pulsar_OUT")
     println(io, "    set noc    [expr {int(\$par(NOC))}]")
     @printf(io, "    set pwr_hz %.4f\n", pwr_hz)
     println(io)
@@ -211,7 +211,7 @@ function _emit_simpson_main(io::IO, ann::PhysicsAnnotation)
     println(io, "    # Cartesian {Bx_Hz By_Hz} so the :hz parser in the driver is correct.")
     println(io, "    set deg2rad [expr {3.14159265358979323846 / 180.0}]")
     println(io, "    set wfm [shape2list \$rfsh]")
-    println(io, "    set fp [open \$PULSAR_OUT w]")
+    println(io, "    set fp [open \$Pulsar_OUT w]")
     println(io, "    for {set k 0} {\$k < \$noc} {incr k} {")
     println(io, "        set pair [lindex \$wfm \$k]")
     println(io, "        set amp  [lindex \$pair 0]")

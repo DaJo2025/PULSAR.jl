@@ -8,8 +8,8 @@ black-box.
 
 | Function | Source | Notes |
 |---|---|---|
-| `nelder_mead_optimize` | [`src/Optimization/Direct/SimplexSearch.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Direct/SimplexSearch.jl) | Generic Nelder–Mead |
-| `nelder_mead_optimize` (QOC dispatch) | [`src/Optimization/DirectSearchMethods.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/DirectSearchMethods.jl) | QOC-tailored signature |
+| `nelder_mead_optimize` | [`src/Optimization/Direct/SimplexSearch.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Direct/SimplexSearch.jl) | Generic Nelder–Mead |
+| `nelder_mead_optimize` (QOC dispatch) | [`src/Optimization/DirectSearchMethods.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/DirectSearchMethods.jl) | QOC-tailored signature |
 
 Robust on small problems (≲ 50 parameters). Configurable via `NelderMeadConfig`.
 
@@ -21,7 +21,7 @@ Robust on small problems (≲ 50 parameters). Configurable via `NelderMeadConfig
 | `compass_search_optimize` | Coordinate-aligned probing |
 | `powell_dirset_optimize` | Powell's direction-set method |
 
-Source: [`src/Optimization/Direct/PatternSearch.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Direct/PatternSearch.jl).
+Source: [`src/Optimization/Direct/PatternSearch.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Direct/PatternSearch.jl).
 
 ## Quadratic-model trust-region
 
@@ -36,8 +36,8 @@ Powell's NEWUOA / BOBYQA / UOBYQA family.
 | `cobyla_optimize` | None | Linear+nonlinear |
 | `lincoa_optimize` | None | Linear |
 
-Source: [`src/Optimization/Direct/QuadraticModels.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Direct/QuadraticModels.jl)
-and [`src/Optimization/Direct/ConstrainedDirect.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Direct/ConstrainedDirect.jl).
+Source: [`src/Optimization/Direct/QuadraticModels.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Direct/QuadraticModels.jl)
+and [`src/Optimization/Direct/ConstrainedDirect.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Direct/ConstrainedDirect.jl).
 
 ## When to use
 

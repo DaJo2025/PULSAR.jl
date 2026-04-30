@@ -32,7 +32,7 @@ Save an optimised Cartesian waveform to a Bruker JCAMP-DX shape file.
 | `dt`                 | *(required)*              | Step duration in seconds; scalar or `Vector`      |
 | `title`              | `""`                      | `##TITLE=` header field                           |
 | `owner`              | `""`                      | `##OWNER=` header field                           |
-| `origin`             | `"PULSAR.jl"`             | `##ORIGIN=` header field                          |
+| `origin`             | `"Pulsar.jl"`             | `##ORIGIN=` header field                          |
 | `shape_parameters`   | `"no info"`               | Free-text in `##\$SHAPE_PARAMETERS= Type: …`      |
 | `shape_exmode`       | `""`                      | `##\$SHAPE_EXMODE=` (e.g. `"Excitation"`)         |
 | `shape_totrot_deg`   | `180.0`                   | Total rotation angle in degrees                   |
@@ -73,7 +73,7 @@ function save_bruker_shape(
     dt               :: Union{Float64, Vector{Float64}},
     title            :: String  = "",
     owner            :: String  = "",
-    origin           :: String  = "PULSAR.jl",
+    origin           :: String  = "Pulsar.jl",
     shape_parameters :: String  = "no info",
     shape_exmode     :: String  = "",
     shape_totrot_deg :: Float64 = 180.0,
@@ -252,7 +252,7 @@ end
 Export an `OptimizedPulse` to a spectrometer or quantum-hardware file format.
 
 This is a thin dispatcher that delegates all logic and file I/O to
-`PULSAR.Output.export_pulse`. See `PULSAR.Output` for full documentation.
+`Pulsar.Output.export_pulse`. See `Pulsar.Output` for full documentation.
 
 # Supported application / vendor combinations
 

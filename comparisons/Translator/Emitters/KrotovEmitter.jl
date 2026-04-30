@@ -4,7 +4,7 @@
 Emit a native Julia script that runs Krotov.jl on a problem described by a
 [`PhysicsAnnotation`](@ref).  The emitted script:
 
-  - Uses PULSAR's public API (`mr_system`, `hamiltonian`, `spin_op`,
+  - Uses Pulsar's public API (`mr_system`, `hamiltonian`, `spin_op`,
     `spin_state`) to build drifts / operators / states from the annotation
     (no serialised matrix literals).
   - Constructs QuantumControl.jl `Trajectory` objects — one per `(drift,
@@ -33,11 +33,11 @@ const KROTOV_CAPABILITIES = SolverCapabilities(
 )
 
 """
-    emit_krotov(ann, workdir; problem_id="PULSAR",
+    emit_krotov(ann, workdir; problem_id="Pulsar",
                   guess_seed=nothing, project_root=...) -> (script_path, waveform_path)
 """
 function emit_krotov(ann::PhysicsAnnotation, workdir::String;
-                      problem_id::String="PULSAR",
+                      problem_id::String="Pulsar",
                       guess_seed::Union{Nothing,Int}=nothing)::Tuple{String,String}
     script_path   = joinpath(workdir, "krotov_run.jl")
     waveform_path = joinpath(workdir, "krotov_shape.txt")
@@ -58,12 +58,12 @@ function _emit_krotov_script(io::IO, ann::PhysicsAnnotation,
     pwr    = 2π * ann.controls[1].pwr_max_hz
     l, u   = -1.0, 1.0                 # annotation amplitude bounds
 
-    println(io, "# PULSAR benchmark $problem_id — emitted by KrotovEmitter.jl")
+    println(io, "# Pulsar benchmark $problem_id — emitted by KrotovEmitter.jl")
     println(io)
     println(io, "using LinearAlgebra")
     println(io, "using Printf")
     println(io, "using Random")
-    println(io, "using PULSAR")
+    println(io, "using Pulsar")
     println(io, "using QuantumControl")
     println(io, "using QuantumControl.Functionals: J_T_sm")
     println(io, "using QuantumPropagators: ExpProp")
@@ -78,12 +78,12 @@ function _emit_krotov_script(io::IO, ann::PhysicsAnnotation,
         println(io, "sys = mr_system([$isos])")
     end
 
-    # Drifts (PULSAR.hamiltonian — fully-qualified to avoid clash with
+    # Drifts (Pulsar.hamiltonian — fully-qualified to avoid clash with
     # QuantumControl.hamiltonian which is also loaded below).
     if ann.sweep === nothing
         base_offsets = [s.offset_hz for s in ann.spins]
         _write_couplings_matrix(io, ann)
-        println(io, "drifts = [PULSAR.hamiltonian(sys; B0_tesla=$(ann.b0_tesla), " *
+        println(io, "drifts = [Pulsar.hamiltonian(sys; B0_tesla=$(ann.b0_tesla), " *
                      "offsets_hz=$(base_offsets), couplings_hz=J)]")
     else
         base_offsets = [s.offset_hz for s in ann.spins]
@@ -95,7 +95,7 @@ function _emit_krotov_script(io::IO, ann::PhysicsAnnotation,
         end
         println(io, "]")
         if ann.sweep.target_spin_idx == 0
-            println(io, "drifts = [PULSAR.hamiltonian(sys; B0_tesla=$(ann.b0_tesla), " *
+            println(io, "drifts = [Pulsar.hamiltonian(sys; B0_tesla=$(ann.b0_tesla), " *
                          "offsets_hz=$(base_offsets) .+ Δf, couplings_hz=J) " *
                          "for Δf in sweep_offsets]")
         else
@@ -104,7 +104,7 @@ function _emit_krotov_script(io::IO, ann::PhysicsAnnotation,
             println(io, "drifts = map(sweep_offsets) do Δf")
             println(io, "    offs = copy(base_offsets)")
             println(io, "    offs[$idx] += Δf")
-            println(io, "    PULSAR.hamiltonian(sys; B0_tesla=$(ann.b0_tesla), " *
+            println(io, "    Pulsar.hamiltonian(sys; B0_tesla=$(ann.b0_tesla), " *
                          "offsets_hz=offs, couplings_hz=J)")
             println(io, "end")
         end
@@ -177,7 +177,7 @@ function _emit_krotov_script(io::IO, ann::PhysicsAnnotation,
     println(io, "end")
     println(io)
     println(io, "krotov_fidelity = 1.0 - result.J_T")
-    println(io, "println(\"PULSAR_KROTOV_FIDELITY: \$(krotov_fidelity)\")")
+    println(io, "println(\"Pulsar_KROTOV_FIDELITY: \$(krotov_fidelity)\")")
 end
 
 function _write_couplings_matrix(io::IO, ann::PhysicsAnnotation)

@@ -9,7 +9,7 @@ Workflow:
   2. Run the SIMPSON binary in a temp workdir.
   3. Parse the optimised shape (raw Bx/By in Hz) via
      [`parse_waveform_file`](@ref) with `convention = :hz`.
-  4. Re-evaluate fidelity through PULSAR's canonical
+  4. Re-evaluate fidelity through Pulsar's canonical
      [`grape_state_kernel`](@ref) — this is the number reported in the table.
 
 SIMPSON's internal fidelity is only used to drive its own L-BFGS; we don't

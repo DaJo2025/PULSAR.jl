@@ -2,7 +2,7 @@
 
 Global / population-based stochastic optimizers, useful when the objective is
 multi-modal or the gradient is unreliable. All metaheuristic optimizers live
-under [`src/Optimization/Metaheur/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Optimization/Metaheur).
+under [`src/Optimization/Metaheur/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Optimization/Metaheur).
 
 ## Population-based
 
@@ -34,7 +34,7 @@ for finding multiple high-quality solutions across distinct basins.
 
 | Function | Source |
 |---|---|
-| `cmaes_optimize`, `pso_optimize`, `nelder_mead_optimize` (QOC signatures) | [`src/Optimization/DirectSearchMethods.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/DirectSearchMethods.jl) |
+| `cmaes_optimize`, `pso_optimize`, `nelder_mead_optimize` (QOC signatures) | [`src/Optimization/DirectSearchMethods.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/DirectSearchMethods.jl) |
 
 These take `(sys, target, ctrl)` directly and internally call the generic
 optimizer with the right objective wrapper.

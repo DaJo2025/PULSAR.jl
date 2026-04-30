@@ -1,15 +1,15 @@
-module PULSARPlotsExt
+module PulsarPlotsExt
 
-using PULSAR
+using Pulsar
 using Plots
-import PULSAR: plot_convergence, plot_controls, plot_bloch_trajectory,
+import Pulsar: plot_convergence, plot_controls, plot_bloch_trajectory,
                plot_sensitivity_heatmap, plot_pareto_front
 
 function plot_convergence(
-    result :: PULSAR.OptimizationResult;
+    result :: Pulsar.OptimizationResult;
     show_gradient_norm :: Bool   = true,
     log_scale          :: Bool   = true,
-    title              :: String = "PULSAR Optimization Convergence",
+    title              :: String = "Pulsar Optimization Convergence",
     save_path          :: String = "",
 )
     iters = 1:length(result.fidelity_history)
@@ -41,7 +41,7 @@ function plot_convergence(
 end
 
 function plot_controls(
-    controls :: PULSAR.ControlSequence;
+    controls :: Pulsar.ControlSequence;
     control_labels :: Vector{String} = String[],
     title          :: String         = "Optimal Control Sequence",
     save_path      :: String         = "",
@@ -60,8 +60,8 @@ function plot_controls(
 end
 
 function plot_bloch_trajectory(
-    system   :: PULSAR.AbstractQuantumSystem,
-    controls :: PULSAR.ControlSequence;
+    system   :: Pulsar.AbstractQuantumSystem,
+    controls :: Pulsar.ControlSequence;
     initial_state :: Vector{ComplexF64} = ComplexF64[1.0, 0.0],
     save_path     :: String             = "",
 )
@@ -77,7 +77,7 @@ function plot_bloch_trajectory(
     for k in 1:nt
         H = system.H_drift + sum(controls.controls[j,k] .* system.H_controls[j]
                                   for j in 1:system.n_controls)
-        U = PULSAR.compute_propagator(H, dt)
+        U = Pulsar.compute_propagator(H, dt)
         ψ = U * ψ
         push!(bx, real(ψ' * σ_x * ψ))
         push!(by, real(ψ' * σ_y * ψ))
@@ -93,7 +93,7 @@ function plot_bloch_trajectory(
 end
 
 function plot_sensitivity_heatmap(
-    sens      :: PULSAR.SensitivityResult;
+    sens      :: Pulsar.SensitivityResult;
     title     :: String = "Control Sensitivity Heatmap",
     save_path :: String = "",
 )
@@ -108,7 +108,7 @@ function plot_sensitivity_heatmap(
 end
 
 function plot_pareto_front(
-    result           :: PULSAR.MultiObjectiveResult,
+    result           :: Pulsar.MultiObjectiveResult,
     objective_names  :: Vector{String} = ["Objective 1", "Objective 2"];
     save_path        :: String         = "",
 )
@@ -124,4 +124,4 @@ function plot_pareto_front(
     return plt
 end
 
-end  # module PULSARPlotsExt
+end  # module PulsarPlotsExt

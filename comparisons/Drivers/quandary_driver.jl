@@ -9,7 +9,7 @@ Workflow:
      (`standardmodel = False`) so no transmon parameterisation is assumed.
   2. Run `python <script>` as a subprocess.
   3. Parse the normalised waveform via [`parse_waveform_file`](@ref).
-  4. Re-evaluate with PULSAR's [`grape_state_kernel`](@ref).
+  4. Re-evaluate with Pulsar's [`grape_state_kernel`](@ref).
 
 Installation:
     https://github.com/LLNL/quandary  (build + pip install .)
@@ -71,7 +71,7 @@ function _run_quandary(problem::BenchmarkProblem, driver_name::String,
 
     # The Quandary Python wrapper shells out to the C++ `quandary` binary,
     # which must be on $PATH.  If the user did not export it, look in the
-    # common PULSAR checkout location and prepend its dir to subprocess PATH.
+    # common Pulsar checkout location and prepend its dir to subprocess PATH.
     child_env = copy(ENV)
     for candidate in (joinpath(dirname(dirname(@__DIR__)), "quandary", "quandary"),
                       expanduser("~/quandary/quandary"))

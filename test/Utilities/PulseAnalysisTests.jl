@@ -6,7 +6,7 @@
 # helper.  Each test pins to a hand-computable reference value.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Statistics
 

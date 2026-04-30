@@ -1,10 +1,10 @@
 # Checkpointing
 
-PULSAR uses a **unified** checkpoint format. The single `Checkpoint` type
+Pulsar uses a **unified** checkpoint format. The single `Checkpoint` type
 (subtype of `AbstractCheckpoint`) covers MR, QC, and generic optimizations,
 and all file I/O goes through one set of save/load functions.
 
-Source: [`src/IO/Checkpoint.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/IO/Checkpoint.jl).
+Source: [`src/IO/Checkpoint.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/IO/Checkpoint.jl).
 
 ## File format
 

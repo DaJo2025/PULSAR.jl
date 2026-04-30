@@ -1,6 +1,6 @@
 # Propagators
 
-PULSAR's optimization kernels rely on piecewise-constant propagation of the
+Pulsar's optimization kernels rely on piecewise-constant propagation of the
 time-dependent Schrödinger or Liouville equation.
 
 ## Piecewise-constant evolution
@@ -34,7 +34,7 @@ The forward/backward arrays let GRAPE compute the gradient
 ## MAS (magic-angle spinning) propagators
 
 For solid-state NMR with sample rotation, the Hamiltonian is time-periodic.
-PULSAR provides a Wigner-rotation-based stepper:
+Pulsar provides a Wigner-rotation-based stepper:
 
 | Function | Purpose |
 |---|---|
@@ -103,7 +103,7 @@ L = lindblad_system_from_jump_ops(H_drift,
                                    H_controls)
 ```
 
-PULSAR provides:
+Pulsar provides:
 
 | Function | Purpose |
 |---|---|

@@ -1,6 +1,6 @@
 # Hamiltonians
 
-PULSAR splits every Hamiltonian into a **drift** part `H_drift` and a sum of
+Pulsar splits every Hamiltonian into a **drift** part `H_drift` and a sum of
 **control** parts `{H_c}` weighted by time-dependent waveforms `u_c(t)`:
 
 ```math
@@ -22,7 +22,7 @@ H(t) = H_\text{drift} + \sum_c u_c(t)\, H_c
 
 ## Building system Hamiltonians
 
-PULSAR provides domain-specific constructors that assemble drift Hamiltonians
+Pulsar provides domain-specific constructors that assemble drift Hamiltonians
 from physical parameters:
 
 | Constructor | Domain | Drift includes |

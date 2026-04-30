@@ -8,7 +8,7 @@
 #   2. A finite-difference cross-check against the analytical gradient.
 
 using Test
-using PULSAR
+using Pulsar
 using Random
 
 # ---------------------------------------------------------------------------

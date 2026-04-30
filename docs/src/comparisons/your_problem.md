@@ -32,7 +32,7 @@ conditionally, so as soon as it exists the problems become visible.
 ## A complete example: broadband ¹H 180°
 
 ```julia
-using PULSAR
+using Pulsar
 
 function bm_broadband_180()
     sys = mr_system(spins              = ["1H"],
@@ -87,10 +87,10 @@ The driver dispatches on the type of `problem.ctrl`:
 
 | `ctrl` type | Domain | Drivers that accept it |
 |---|---|---|
-| `ControlSequence`    | Generic / QC closed system | All PULSAR drivers, QuantumControl, Krotov, QuTiP, qopt |
-| `MRControl`          | NMR / EPR / DNP closed system | PULSAR (MR layer), Spinach, SIMPSON |
-| `LindbladMRControl`  | NMR / EPR open system (T₁/T₂) | PULSAR Lindblad path; drivers that lack open-system support return an error |
-| `MRIControlSequence` | Bloch / MRI | PULSAR Bloch propagator |
+| `ControlSequence`    | Generic / QC closed system | All Pulsar drivers, QuantumControl, Krotov, QuTiP, qopt |
+| `MRControl`          | NMR / EPR / DNP closed system | Pulsar (MR layer), Spinach, SIMPSON |
+| `LindbladMRControl`  | NMR / EPR open system (T₁/T₂) | Pulsar Lindblad path; drivers that lack open-system support return an error |
+| `MRIControlSequence` | Bloch / MRI | Pulsar Bloch propagator |
 
 A driver that does not support the supplied `ctrl` type returns an
 `error_result` with a clear message rather than silently producing a

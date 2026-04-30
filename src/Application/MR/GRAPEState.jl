@@ -261,11 +261,11 @@ Falls back to CPU (`_grape_cpu`) if the requested package is not loaded.
 """
 function _grape_gpu(waveform::Matrix{Float64}, ctrl, gpu_sym::Symbol)
     if gpu_sym == :metal && !_METAL_LOADED[]
-        @warn "PULSAR: Metal.jl not loaded — falling back to CPU backend" maxlog=1
+        @warn "Pulsar: Metal.jl not loaded — falling back to CPU backend" maxlog=1
         return _grape_cpu(waveform, ctrl)
     end
     if gpu_sym == :cuda && !_CUDA_LOADED[]
-        @warn "PULSAR: CUDA.jl not loaded — falling back to CPU backend" maxlog=1
+        @warn "Pulsar: CUDA.jl not loaded — falling back to CPU backend" maxlog=1
         return _grape_cpu(waveform, ctrl)
     end
 

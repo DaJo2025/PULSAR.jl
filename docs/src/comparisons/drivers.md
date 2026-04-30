@@ -20,7 +20,7 @@ Implementation rules (enforced by every shipped driver):
 2. **Wrap the optimizer call in `try/catch`.** Return `error_result(...)`
    on any thrown exception so a single broken solver does not abort the
    whole run.
-3. **Re-evaluate fidelity through PULSAR.** Whatever the external solver
+3. **Re-evaluate fidelity through Pulsar.** Whatever the external solver
    reports, the `BenchmarkResult.fidelity` field must be the value
    returned by `grape_state_kernel(waveform, ctrl)` (closed-system) or
    `grape_lindblad_kernel(waveform, ctrl)` (open-system). This is the
@@ -36,15 +36,15 @@ Implementation rules (enforced by every shipped driver):
 
 Driver keys are the strings used in `--packages` on the CLI. The keys map
 to driver instances in the `ALL_DRIVERS` dict in
-[`run_comparisons.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/comparisons/run_comparisons.jl).
+[`run_comparisons.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/comparisons/run_comparisons.jl).
 
 | Driver key       | Backend                      | Method            | External requirement |
 |------------------|------------------------------|-------------------|----------------------|
-| `PULSAR_lbfgs`   | PULSAR built-in              | L-BFGS            | none                 |
-| `PULSAR_lbfgsb`  | PULSAR built-in              | L-BFGS-B          | `LBFGSB.jl` (extension) |
-| `PULSAR_cg`      | PULSAR built-in              | Nonlinear CG      | none                 |
-| `PULSAR_grape`   | PULSAR built-in              | First-order GRAPE | none                 |
-| `PULSAR_cmaes`   | PULSAR built-in              | CMA-ES            | none                 |
+| `Pulsar_lbfgs`   | Pulsar built-in              | L-BFGS            | none                 |
+| `Pulsar_lbfgsb`  | Pulsar built-in              | L-BFGS-B          | `LBFGSB.jl` (extension) |
+| `Pulsar_cg`      | Pulsar built-in              | Nonlinear CG      | none                 |
+| `Pulsar_grape`   | Pulsar built-in              | First-order GRAPE | none                 |
+| `Pulsar_cmaes`   | Pulsar built-in              | CMA-ES            | none                 |
 | `QuantumControl` | [`QuantumControl.jl`](https://github.com/JuliaQuantumControl/QuantumControl.jl) | GRAPE | `Pkg.add("QuantumControl")` |
 | `Krotov`         | [`Krotov.jl`](https://github.com/JuliaQuantumControl/Krotov.jl) | Krotov | `Pkg.add("Krotov")` |
 | `QuTiP`          | [QuTiP](https://qutip.org/) (Python) | GRAPE | `Pkg.add("PythonCall")` + `pip install qutip` |
@@ -60,12 +60,12 @@ overall run continues.
 ## Driver source files
 
 Each entry above corresponds to one file in
-[`comparisons/Drivers/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/comparisons/Drivers):
+[`comparisons/Drivers/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/comparisons/Drivers):
 
 | File | Driver type |
 |---|---|
 | `driver_interface.jl`     | `AbstractSolverDriver`, `BenchmarkResult`, `not_available_result`, `error_result` |
-| `pulsar_driver.jl`        | `PULSARDriver(method::Symbol)` — covers all five PULSAR keys |
+| `pulsar_driver.jl`        | `PulsarDriver(method::Symbol)` — covers all five Pulsar keys |
 | `quantumcontrol_driver.jl`| `QuantumControlDriver` |
 | `krotov_driver.jl`        | `KrotovDriver` |
 | `qutip_driver.jl`         | `QuTiPDriver` |
@@ -80,20 +80,20 @@ External solvers expect the problem in their own native form — a
 serialized C struct for SIMPSON, a Python `Hamiltonian` object for QuTiP,
 a MATLAB `control` struct for Spinach, and so on. Rather than each driver
 re-implementing this conversion, the
-[`comparisons/Translator/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/comparisons/Translator)
+[`comparisons/Translator/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/comparisons/Translator)
 subsystem provides a shared, declarative emission pipeline:
 
 | Module | Role |
 |---|---|
 | `Capabilities.jl`         | Per-package feature flags (open-system, ensembles, time-dependent drift, …). Used to decide which `(driver, problem)` pairs are valid. |
-| `PhysicsAnnotation.jl`    | Translates a PULSAR `MRSpinSystem` / `TransmonSystem` / etc. into a solver-agnostic `PhysicsAnnotation` record. |
+| `PhysicsAnnotation.jl`    | Translates a Pulsar `MRSpinSystem` / `TransmonSystem` / etc. into a solver-agnostic `PhysicsAnnotation` record. |
 | `TransmonAnnotation.jl`   | The QC-specific specialisation of the above. |
 | `Emitters/`               | One emitter per backend that turns the annotation + control template into the solver's native input file or in-memory object. |
 | `EmitterHelpers.jl`       | Shared formatting (number printing, units, file-name conventions). |
 | `Subprocess.jl`           | Common wrapper around `run(...)` for subprocess-based drivers (SIMPSON, Quandary, MATLAB CLI). |
 
 The driver itself is then small: probe availability, build the annotation,
-emit, run, parse the waveform back, re-evaluate fidelity through PULSAR,
+emit, run, parse the waveform back, re-evaluate fidelity through Pulsar,
 return the `BenchmarkResult`.
 
 ## Adding a new driver

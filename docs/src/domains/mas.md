@@ -1,11 +1,11 @@
 # MAS — magic-angle-spinning solid-state NMR
 
 Solid-state NMR with sample rotation requires time-dependent Hamiltonians
-and powder averaging. PULSAR's MAS support is in
-[`src/Types/MASSpinSystem.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Types/MASSpinSystem.jl),
-[`src/Computation/MASPropagators.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Computation/MASPropagators.jl),
+and powder averaging. Pulsar's MAS support is in
+[`src/Types/MASSpinSystem.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Types/MASSpinSystem.jl),
+[`src/Computation/MASPropagators.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Computation/MASPropagators.jl),
 and
-[`src/Application/MR/SolidStateNMR/MASOptControl.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/MR/SolidStateNMR/MASOptControl.jl).
+[`src/Application/MR/SolidStateNMR/MASOptControl.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/MR/SolidStateNMR/MASOptControl.jl).
 
 ## Building a MAS system
 
@@ -32,7 +32,7 @@ sys = mas_spin_system(base, 12_500.0;                   # 12.5 kHz rotor
 ## Time-dependent Hamiltonian
 
 The drift varies as the sample rotates. For each rotor angle `t_k`,
-PULSAR builds the rotor-frame Hamiltonian:
+Pulsar builds the rotor-frame Hamiltonian:
 
 ```julia
 H_k = build_mas_hamiltonian(sys, t_k)

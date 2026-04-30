@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — LindbladQCControl (Theme 6)
+# Pulsar.jl — LindbladQCControl (Theme 6)
 # ============================================================
 #
 # Open-system optimal-control context for the QC application layer,

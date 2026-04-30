@@ -3,7 +3,7 @@
 When pulses must satisfy hard physical limits (peak amplitude, total energy,
 peak amplitude / bandwidth, custom relations), use `constrained_optimize`
 from
-[`src/Optimization/Constrained/ConstrainedOpt.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/Constrained/ConstrainedOpt.jl).
+[`src/Optimization/Constrained/ConstrainedOpt.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/Constrained/ConstrainedOpt.jl).
 
 ## Built-in constraint types
 

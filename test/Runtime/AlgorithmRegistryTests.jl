@@ -4,7 +4,7 @@
 # and the built-in registrations populated at module-load time.
 
 using Test
-using PULSAR
+using Pulsar
 
 @testset "AlgorithmRegistry (Theme 8)" begin
 

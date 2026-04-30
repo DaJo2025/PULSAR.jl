@@ -1,7 +1,7 @@
 # API — Computation
 
 Propagators, ensemble maps, MAS, and Bloch primitives. Source:
-[`src/Computation/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Computation).
+[`src/Computation/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Computation).
 
 ## Propagators
 

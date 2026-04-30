@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Multi-Objective Optimization
+# Pulsar.jl — Multi-Objective Optimization
 # Pulse Design Library for Spin Control Algorithms and Rollout
 # ============================================================
 #

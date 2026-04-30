@@ -1,7 +1,7 @@
 """
     AdaptiveStepSize.jl
 
-Adaptive step-size schedules and preconditioning for PULSAR optimizers.
+Adaptive step-size schedules and preconditioning for Pulsar optimizers.
 
 Provides:
 

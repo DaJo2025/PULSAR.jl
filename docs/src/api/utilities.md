@@ -1,7 +1,7 @@
 # API — Utilities
 
 Validation and visualization helpers.
-Source: [`src/Utilities/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Utilities).
+Source: [`src/Utilities/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Utilities).
 
 ## Parameter validation
 

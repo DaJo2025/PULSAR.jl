@@ -1,7 +1,7 @@
 """
     HybridExecution.jl
 
-Hybrid CPU/GPU execution orchestrator for PULSAR.jl.
+Hybrid CPU/GPU execution orchestrator for Pulsar.jl.
 
 Automatically selects the most efficient compute device (`:cpu`, `:gpu`, or
 `:hybrid`) for each quantum control operation based on:

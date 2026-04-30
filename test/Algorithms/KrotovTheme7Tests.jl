@@ -9,7 +9,7 @@
 # fixture used by the baseline KrotovTests.jl.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 

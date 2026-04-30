@@ -10,7 +10,7 @@ re-evaluation consistent.
 
 using Test
 using LinearAlgebra
-using PULSAR
+using Pulsar
 
 include(joinpath(@__DIR__, "..", "..", "Problems", "all_problems.jl"))
 

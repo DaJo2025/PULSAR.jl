@@ -1,6 +1,6 @@
 # Quickstart — single-qubit state transfer
 
-This walkthrough drives the canonical PULSAR optimization loop: build a system,
+This walkthrough drives the canonical Pulsar optimization loop: build a system,
 specify a target, initialize a control sequence, configure GRAPE, run, and
 re-simulate the optimum to verify.
 
@@ -13,7 +13,7 @@ Drive a single qubit from |0⟩ to |1⟩ in time `T = π` under
 ## The full code
 
 ```julia
-using PULSAR
+using Pulsar
 using LinearAlgebra, Random
 
 # §1 Pauli matrices
@@ -89,7 +89,7 @@ Runs first-order GRAPE with optional step-size adaptation. The result has:
 
 ### Re-simulation
 
-Every example in PULSAR follows a strict rule: independently re-simulate the
+Every example in Pulsar follows a strict rule: independently re-simulate the
 optimized control sequence with `compute_fidelity` and `@assert` agreement to
 ≤ 1e-6. This catches subtle bugs in optimizer-internal kernels and is required
 in every benchmark/comparison driver.

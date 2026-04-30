@@ -10,7 +10,7 @@
 # gate fidelity for unitary inputs).
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 
 @testset "Theme 4 — extended fidelity metrics" begin

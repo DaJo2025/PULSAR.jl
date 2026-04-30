@@ -38,7 +38,7 @@ using LinearAlgebra
 
 Build the N×N density matrix ρ = |ψ⟩⟨ψ| for a pure-state vector.
 
-All NMR initial/target states in PULSAR are specified as pure-state vectors
+All NMR initial/target states in Pulsar are specified as pure-state vectors
 (from `spin_state`). `LindbladMRControl` accepts them directly and calls this
 function internally. You can also call it explicitly to inspect the density matrix.
 

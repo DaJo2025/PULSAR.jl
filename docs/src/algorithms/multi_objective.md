@@ -4,7 +4,7 @@ When several objectives compete (high fidelity *and* low energy *and* smooth
 waveform *and* low peak amplitude), Pareto-front exploration is more
 informative than a single weighted-sum optimum.
 
-Source: [`src/Optimization/MultiObjective/MultiObjectiveOptimization.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Optimization/MultiObjective/MultiObjectiveOptimization.jl).
+Source: [`src/Optimization/MultiObjective/MultiObjectiveOptimization.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Optimization/MultiObjective/MultiObjectiveOptimization.jl).
 
 ## API
 

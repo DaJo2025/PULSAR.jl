@@ -1,7 +1,7 @@
 """
     GRAPE.jl
 
-GRadient Ascent Pulse Engineering (GRAPE) optimizer for PULSAR.
+GRadient Ascent Pulse Engineering (GRAPE) optimizer for Pulsar.
 
 Implements the canonical GRAPE algorithm (Khaneja et al., 2005) for optimizing
 piecewise-constant control sequences that steer a quantum system toward a target
@@ -133,7 +133,7 @@ end
 """
     OptimizationResult
 
-Container for the result of any PULSAR optimization run.
+Container for the result of any Pulsar optimization run.
 
 # Fields
 - `controls::Matrix{Float64}` — optimal control amplitudes, shape `[n_controls × n_timesteps]`
@@ -996,7 +996,7 @@ is the maximum control change per step as a fraction of `amplitude_limit`
 
 # Example
 ```julia
-using PULSAR
+using Pulsar
 
 Iz = 0.5 .* ComplexF64[1 0; 0 -1];  Ix = 0.5 .* ComplexF64[0 1; 1 0]
 systems = [quantum_system(2π * Δf .* Iz, [2π .* Ix])

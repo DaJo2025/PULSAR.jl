@@ -2,7 +2,7 @@
 
 Domain wrappers for MR (NMR / EPR / MAS / MRI / DNP) and quantum-computing
 platforms. Source:
-[`src/Application/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Application).
+[`src/Application/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Application).
 
 ## MR layer — generic
 

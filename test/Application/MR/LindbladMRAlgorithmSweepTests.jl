@@ -16,7 +16,7 @@
 # silently fall through to a Hilbert-space code path.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 

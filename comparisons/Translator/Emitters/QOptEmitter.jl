@@ -32,11 +32,11 @@ const QOPT_CAPABILITIES = SolverCapabilities(
 )
 
 """
-    emit_qopt(ann, workdir; problem_id="PULSAR",
+    emit_qopt(ann, workdir; problem_id="Pulsar",
                 guess_seed=nothing) -> (script_path, waveform_path)
 """
 function emit_qopt(ann::PhysicsAnnotation, workdir::String;
-                     problem_id::String="PULSAR",
+                     problem_id::String="Pulsar",
                      guess_seed::Union{Nothing,Int}=nothing)::Tuple{String,String}
     script_path   = joinpath(workdir, "qopt_run.py")
     waveform_path = joinpath(workdir, "qopt_shape.txt")
@@ -56,7 +56,7 @@ function _emit_qopt_script(io::IO, ann::PhysicsAnnotation,
     n_ctrl  = length(ann.controls)
     n_t     = ann.n_time_steps
 
-    println(io, "# PULSAR benchmark $problem_id — emitted by QOptEmitter.jl")
+    println(io, "# Pulsar benchmark $problem_id — emitted by QOptEmitter.jl")
     println(io)
     println(io, "import numpy as np")
     println(io, "import qopt")

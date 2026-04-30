@@ -1,7 +1,7 @@
 # API — Types
 
 Core system, target, and control types. Source:
-[`src/Types/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Types).
+[`src/Types/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Types).
 
 ## Quantum systems
 

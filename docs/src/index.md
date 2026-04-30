@@ -1,14 +1,14 @@
-# PULSAR.jl
+# Pulsar.jl
 
 ```@raw html
 <p align="center">
-  <img src="assets/logo.png" alt="PULSAR logo" width="420"/>
+  <img src="assets/logo.png" alt="Pulsar logo" width="420"/>
 </p>
 ```
 
 **Pulse Design Library for Spin Control Algorithms and Rollout**
 
-PULSAR is a Julia package for designing optimal control pulses for quantum
+Pulsar is a Julia package for designing optimal control pulses for quantum
 systems, with first-class support for both quantum-computing platforms
 (transmon, trapped ion, neutral atom, spin qubit, NV center) and magnetic
 resonance (NMR, EPR, MAS solid-state, MRI, DNP).
@@ -30,18 +30,18 @@ It provides a unified, layered API across:
 
 ## Layer model
 
-PULSAR's source tree follows a strict five-layer dependency model. Higher
+Pulsar's source tree follows a strict five-layer dependency model. Higher
 layers may only depend on lower ones.
 
 | Layer | Subdirectory | Purpose |
 |---|---|---|
-| 1a | [`src/Types/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Types) | Core system, target, control types |
-| 1b | [`src/Computation/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Computation) | Propagators, ensemble, MAS, Bloch |
-| 1c | [`src/Backend/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Backend) | Hardware, parallelism, scheduling |
-| 2  | [`src/Physics/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Physics) | Objectives, penalties, gradients, Lindblad |
-| 3  | [`src/Optimization/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Optimization) | All optimizers |
-| 4  | [`src/IO/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/IO), [`src/Runtime/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Runtime), [`src/Utilities/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Utilities) | Infrastructure |
-| 5  | [`src/Application/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Application) | Domain wrappers (MR, QC) |
+| 1a | [`src/Types/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Types) | Core system, target, control types |
+| 1b | [`src/Computation/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Computation) | Propagators, ensemble, MAS, Bloch |
+| 1c | [`src/Backend/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Backend) | Hardware, parallelism, scheduling |
+| 2  | [`src/Physics/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Physics) | Objectives, penalties, gradients, Lindblad |
+| 3  | [`src/Optimization/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Optimization) | All optimizers |
+| 4  | [`src/IO/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/IO), [`src/Runtime/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Runtime), [`src/Utilities/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Utilities) | Infrastructure |
+| 5  | [`src/Application/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Application) | Domain wrappers (MR, QC) |
 
 ## Where to start
 

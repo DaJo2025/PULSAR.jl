@@ -111,13 +111,13 @@ end
 """
     canonical_rescore(waveform, ctrl) -> Float64
 
-Score an external-solver waveform using PULSAR's kernels with the
+Score an external-solver waveform using Pulsar's kernels with the
 **phase-insensitive** `|⟨ψ_t|ψ_f⟩|²` metric (`:square`).  External packages
 optimise in density-matrix space and do not preserve ket global phase, so
 scoring their output with `MRControl`'s default `:real` metric gives garbage
 (e.g. a perfect Rx(π) scores 0 because Rx(π)|+z⟩ = −i|−z⟩).
 
-PULSAR's own driver keeps `grape_state_kernel` (which honours
+Pulsar's own driver keeps `grape_state_kernel` (which honours
 `ctrl.fidelity = :real`) — it optimised that metric and is scored on it.
 """
 function canonical_rescore(waveform::Matrix{Float64}, ctrl::MRControl)::Float64

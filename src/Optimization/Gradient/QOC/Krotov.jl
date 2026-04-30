@@ -383,7 +383,7 @@ function _krotov_forward(system::AbstractQuantumSystem,
         # `amps` is applied to the initial state stored as a field on the
         # system OR we take target.target_state as both boundary conditions
         # (same as state_fidelity does with the identity initial state
-        # ordering in many QOC contexts).  To match PULSAR's state_fidelity
+        # ordering in many QOC contexts).  To match Pulsar's state_fidelity
         # convention, the initial state is the first basis vector unless the
         # user wraps this call in grape_optimize_ensemble; here we require
         # the user to pass it via a field called `init_state` on the system
@@ -411,7 +411,7 @@ end
 
 # A system-level initial state used when the system doesn't carry its own
 # `init_state`.  For explicit state-transfer problems the caller should
-# prefer to encode ψ_init in their QuantumTarget workflow directly; PULSAR's
+# prefer to encode ψ_init in their QuantumTarget workflow directly; Pulsar's
 # current QuantumTarget only stores the target, so we adopt the convention
 # that the first basis vector |0⟩ is the initial state unless overridden by
 # a `metadata["init_state"]` entry on the system.

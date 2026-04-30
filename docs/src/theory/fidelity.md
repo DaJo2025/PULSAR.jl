@@ -1,8 +1,8 @@
 # Fidelity metrics
 
 Fidelity functions live in
-[`src/Physics/Objectives.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/Objectives.jl).
-PULSAR exposes a typed algebra of metrics: every metric is a singleton
+[`src/Physics/Objectives.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/Objectives.jl).
+Pulsar exposes a typed algebra of metrics: every metric is a singleton
 struct subtyping `AbstractFidelityMetric`, so the compiler specialises on
 the metric without runtime symbol comparisons. A legacy `type=:symbol`
 keyword API delegates to the same dispatch.
@@ -43,7 +43,7 @@ F = state_fidelity(ρ, σ, UHLMANN_FIDELITY)
 F = dm_fidelity(ρ, σ)                       # alias for Uhlmann
 ```
 
-`UhlmannFidelity` is computed via the spectral square root of `ρ`. PULSAR's
+`UhlmannFidelity` is computed via the spectral square root of `ρ`. Pulsar's
 Lindblad GRAPE (see [Propagators](propagators.md)) builds the trajectory
 `ρ(T)` via Liouville-space propagation and feeds the result back through
 this dispatch.
@@ -92,7 +92,7 @@ F = gate_fidelity(U, U_target, ProcessTomographyFidelity(d))
 
 ## Krotov co-state boundary
 
-Krotov's algorithm needs `χ(T) = -∂J_T/∂⟨ψ(T)|`. PULSAR derives this
+Krotov's algorithm needs `χ(T) = -∂J_T/∂⟨ψ(T)|`. Pulsar derives this
 automatically per metric:
 
 | Metric             | `χ(T)`                                |
@@ -117,7 +117,7 @@ The chain-rule coefficient `∂F/∂w[c, k]` is also dispatched on the metric:
 | `ModulusOverlap` | `dt_pwr · Im(inner / |z|)`  (zero when `|z| < ε`) |
 
 Density-matrix metrics use a Liouville-space adjoint gradient (see
-[`Physics/Lindblad.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/Lindblad.jl))
+[`Physics/Lindblad.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/Lindblad.jl))
 rather than this Hilbert-space prefactor.
 
 ## Ensemble fidelity
@@ -157,7 +157,7 @@ F = band_selective_fidelity(sys, ctrl, target, band_weights)
 
 `band_selective_gradient` provides the matching analytic gradient. Both live
 in
-[`src/Physics/MRPhysics.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/MRPhysics.jl).
+[`src/Physics/MRPhysics.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/MRPhysics.jl).
 
 ## Custom metrics
 

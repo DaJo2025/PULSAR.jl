@@ -1,7 +1,7 @@
 # ============================================================================
 # Utilities/IterationCallback.jl
 #
-# Unified iteration-progress reporting for all PULSAR optimizers.
+# Unified iteration-progress reporting for all Pulsar optimizers.
 #
 # Usage
 # ─────
@@ -20,7 +20,7 @@ using Printf
     IterationCallback
 
 Callable struct for standardised iteration-progress reporting across all
-PULSAR optimizers. Create with [`iteration_callback`](@ref).
+Pulsar optimizers. Create with [`iteration_callback`](@ref).
 
 ## Fields
 - `print_interval::Int` — print every N iterations (and iteration 1).
@@ -47,7 +47,7 @@ end
                        → IterationCallback
 
 Create a callback for standardised per-iteration output.  Pass the returned
-object as `callback=cb` to any PULSAR optimizer.
+object as `callback=cb` to any Pulsar optimizer.
 
 # Keyword arguments
 - `print_interval::Int` — print every N iterations (default 10).

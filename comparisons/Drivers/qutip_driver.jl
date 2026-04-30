@@ -10,7 +10,7 @@ Workflow:
      problems are translated, not dropped.
   2. Run `python <script>` as a subprocess.
   3. Parse the normalised waveform via [`parse_waveform_file`](@ref).
-  4. Re-evaluate with PULSAR's [`grape_state_kernel`](@ref).
+  4. Re-evaluate with Pulsar's [`grape_state_kernel`](@ref).
 
 Installation:
     pip install qutip krotov

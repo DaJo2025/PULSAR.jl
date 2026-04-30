@@ -1,11 +1,11 @@
-# PULSAR.jl
+# Pulsar.jl
 
 **Pulse Design Library for Spin Control Algorithms and Rollout**
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Julia](https://img.shields.io/badge/Julia-≥1.9-9558B2.svg?logo=julia)](https://julialang.org/)
 
-PULSAR.jl is a Julia toolbox for designing optimal control pulses for quantum
+Pulsar.jl is a Julia toolbox for designing optimal control pulses for quantum
 systems — qubits (transmon, trapped-ion, neutral-atom, spin-qubit, NV-center)
 and spin systems (NMR, EPR, MAS solid-state, MRI, DNP). It provides a unified
 interface to a wide library of optimization algorithms (GRAPE, L-BFGS-B,
@@ -15,12 +15,12 @@ differentiation, and CPU / CUDA / Metal backends.
 
 ## Installation
 
-PULSAR.jl requires Julia ≥ 1.9. Until it is registered in the General registry,
+Pulsar.jl requires Julia ≥ 1.9. Until it is registered in the General registry,
 install directly from the repository:
 
 ```julia
 julia> ]
-pkg> add https://github.com/DaJo2025/PULSAR.jl
+pkg> add https://github.com/DaJo2025/Pulsar.jl
 ```
 
 Optional features (plotting, autodiff, L-BFGS-B) are loaded lazily via Julia
@@ -33,7 +33,7 @@ pkg> add Plots ForwardDiff Zygote LBFGSB
 ## Quickstart — single-qubit state transfer |0⟩ → |1⟩
 
 ```julia
-using PULSAR
+using Pulsar
 using LinearAlgebra, Random
 
 # Pauli matrices
@@ -66,7 +66,7 @@ println("Final fidelity: ", round(F_check; digits=8))
 
 ## Architecture
 
-PULSAR is organized into five strict layers (no upward dependencies):
+Pulsar is organized into five strict layers (no upward dependencies):
 
 | Layer | Subdirectory | Contents |
 |---|---|---|
@@ -83,7 +83,7 @@ PULSAR is organized into five strict layers (no upward dependencies):
 Full documentation — installation, theory, algorithm reference, domain guides,
 and API reference — is hosted at:
 
-> https://DaJo2025.github.io/PULSAR.jl/
+> https://DaJo2025.github.io/Pulsar.jl/
 
 To build the docs locally:
 
@@ -105,7 +105,7 @@ Parallelization, Runtime, IO, Utilities).
 
 ## Comparisons framework
 
-`comparisons/` contains a driver-based framework for benchmarking PULSAR
+`comparisons/` contains a driver-based framework for benchmarking Pulsar
 against external optimal-control solvers (QuantumControl.jl, Krotov.jl, QuTiP,
 Qopt, Spinach, SIMPSON, Quandary). Driver code is shipped; benchmark problem
 definitions are not. To run a comparison, supply your own `BenchmarkProblem`
@@ -113,7 +113,7 @@ instances — see [`comparisons/README.md`](comparisons/README.md).
 
 ## License
 
-PULSAR.jl is licensed under the [Apache License, Version 2.0](LICENSE).
+Pulsar.jl is licensed under the [Apache License, Version 2.0](LICENSE).
 
 ## Citation
 

@@ -1,7 +1,7 @@
 # API — Runtime
 
 Performance monitoring, iteration callbacks, and algorithm selection.
-Source: [`src/Runtime/`](https://github.com/DaJo2025/PULSAR.jl/tree/main/src/Runtime).
+Source: [`src/Runtime/`](https://github.com/DaJo2025/Pulsar.jl/tree/main/src/Runtime).
 
 ## Performance monitoring
 

@@ -1,7 +1,7 @@
 """
     MR/OptControl.jl
 
-High-level optimal control interface for PULSAR magnetic resonance applications.
+High-level optimal control interface for Pulsar magnetic resonance applications.
 
 Defines `MRControl` (a single struct bundling drifts, control operators, target
 states, time grid, and optimiser settings) and `optimcon` (a one-call driver
@@ -182,7 +182,7 @@ fidelity       = :real
 lbfgs_memory   = 10
 verbose        = true
 print_interval = 1
-backend        = get_device() # :cpu | :metal | :cuda  (follows PULSAR.set_device!)
+backend        = get_device() # :cpu | :metal | :cuda  (follows Pulsar.set_device!)
 ```
 
 # Example
@@ -977,7 +977,7 @@ end
 # Generic optimizer support — works with MRControl and LindbladMRControl
 # ═══════════════════════════════════════════════════════════════════════════════
 #
-# All PULSAR optimizers (CMA-ES, PSO, Nelder-Mead, L-BFGS-B, CG, DE) can be
+# All Pulsar optimizers (CMA-ES, PSO, Nelder-Mead, L-BFGS-B, CG, DE) can be
 # used with either Hilbert-space or Liouville-space problems by setting
 # ctrl.method to the appropriate symbol. Julia dispatch selects the correct
 # physics kernel (grape_state_kernel vs grape_lindblad_kernel) automatically.

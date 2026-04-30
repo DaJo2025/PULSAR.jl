@@ -43,10 +43,10 @@
     end
 
     # --------------------------------------------------------------------------
-    # Test 1: PULSAR.jl include order respects layer ordering
+    # Test 1: Pulsar.jl include order respects layer ordering
     # --------------------------------------------------------------------------
-    @testset "Include order in PULSAR.jl" begin
-        pulsar_jl = read(joinpath(src_root, "PULSAR.jl"), String)
+    @testset "Include order in Pulsar.jl" begin
+        pulsar_jl = read(joinpath(src_root, "Pulsar.jl"), String)
 
         # Extract all include("...") paths
         includes = [m.match for m in eachmatch(r"""include\("([^"]+)"\)""", pulsar_jl)]
@@ -81,7 +81,7 @@
 
         for path in paths
             layer = file_layer(path)
-            layer == 0 && continue  # skip PULSAR.jl itself or unknown
+            layer == 0 && continue  # skip Pulsar.jl itself or unknown
             if layer < max_layer_seen - 1 && !(path in ALLOWED_REORDERINGS)
                 push!(violations, "$(path) (layer $(layer)) included after layer $(max_layer_seen) files")
             end

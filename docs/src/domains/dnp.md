@@ -2,10 +2,10 @@
 
 Dynamic nuclear polarization (DNP) transfers electron spin polarization to
 coupled nuclei via microwave irradiation under MAS or static conditions.
-PULSAR's DNP support lives in
-[`src/Types/DNPSpinSystem.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Types/DNPSpinSystem.jl)
+Pulsar's DNP support lives in
+[`src/Types/DNPSpinSystem.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Types/DNPSpinSystem.jl)
 and
-[`src/Application/MR/DNP/DNPOptControl.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Application/MR/DNP/DNPOptControl.jl).
+[`src/Application/MR/DNP/DNPOptControl.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Application/MR/DNP/DNPOptControl.jl).
 
 ## Building a DNP system
 

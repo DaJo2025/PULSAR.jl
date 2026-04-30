@@ -1,7 +1,7 @@
 """
-    PULSAR — Pulse Design Library for Spin Control Algorithms and Rollout
+    Pulsar — Pulse Design Library for Spin Control Algorithms and Rollout
 
-PULSAR.jl is a Julia package for quantum control optimization.
+Pulsar.jl is a Julia package for quantum control optimization.
 It provides a comprehensive suite of algorithms and tools for designing optimal
 control pulses that steer quantum systems toward desired target states or
 operations with high fidelity.
@@ -14,7 +14,7 @@ The package is structured around three central concepts:
    including its drift Hamiltonian, control Hamiltonians, and Hilbert-space
    dimension.
 2. **Optimization Algorithm** — a strategy for finding control amplitudes that
-   maximize (or minimize) a fidelity measure. PULSAR implements gradient-based
+   maximize (or minimize) a fidelity measure. Pulsar implements gradient-based
    methods (GRAPE, L-BFGS, Newton-CG, etc.), derivative-free methods (CMA-ES,
    Nelder-Mead, PSO, etc.), constrained and robust variants, and trust-region methods.
 3. **Backend** — the computational substrate used to evaluate matrix exponentials
@@ -24,7 +24,7 @@ The package is structured around three central concepts:
 # Quick Start
 
 ```julia
-using PULSAR
+using Pulsar
 
 # 1. Define a spin-1/2 system driven by two quadrature controls
 sys = spin_system(
@@ -83,7 +83,7 @@ result = grape_optimize(sys, target; config = GRAPEConfig())
 
 See the online documentation for a complete API reference and tutorials.
 """
-module PULSAR
+module Pulsar
 
 # ---------------------------------------------------------------------------
 # Standard library imports
@@ -784,16 +784,16 @@ _can_use_metal()::Bool = Sys.isapple() && Sys.ARCH === :aarch64
     _detect_and_load_backends()
 
 Called once from `__init__()`. Passively checks whether GPU packages have
-**already been loaded** by the caller before `using PULSAR`.  PULSAR never
+**already been loaded** by the caller before `using Pulsar`.  Pulsar never
 triggers a new `import` here — doing so can stall for minutes or hours if the
 package needs precompilation.
 
 Usage pattern for GPU acceleration
 ────────────────────────────────────
-Load the GPU package *before* PULSAR in your script or REPL session:
+Load the GPU package *before* Pulsar in your script or REPL session:
 
     import Metal          # or: import CUDA
-    using PULSAR          # __init__ will see Metal/CUDA already loaded
+    using Pulsar          # __init__ will see Metal/CUDA already loaded
 
 Decision logic
 ──────────────
@@ -825,13 +825,13 @@ function _detect_and_load_backends()
 
     # ── Log outcome ───────────────────────────────────────────────
     if _METAL_LOADED[] && _CUDA_LOADED[]
-        @debug "PULSAR: Metal + CUDA backends activated"
+        @debug "Pulsar: Metal + CUDA backends activated"
     elseif _METAL_LOADED[]
-        @debug "PULSAR: Metal backend activated (Apple Silicon)"
+        @debug "Pulsar: Metal backend activated (Apple Silicon)"
     elseif _CUDA_LOADED[]
-        @debug "PULSAR: CUDA backend activated"
+        @debug "Pulsar: CUDA backend activated"
     else
-        @debug "PULSAR: no GPU backend found — CPU-only mode"
+        @debug "Pulsar: no GPU backend found — CPU-only mode"
     end
 end
 
@@ -842,7 +842,7 @@ end
 """
     __init__()
 
-Module initialisation hook — runs every time PULSAR is loaded into a
+Module initialisation hook — runs every time Pulsar is loaded into a
 Julia session (not during precompilation).
 
 1. Configure BLAS threads to match Julia thread count.
@@ -880,7 +880,7 @@ function _print_banner()
     n   = Threads.nthreads()
     gpu = _detect_gpu()
     @printf(
-        "\n  PULSAR.jl v%s  |  Julia %s  |  %d thread%s  |  GPU: %s\n\n",
+        "\n  Pulsar.jl v%s  |  Julia %s  |  %d thread%s  |  GPU: %s\n\n",
         ver, VERSION, n, n == 1 ? "" : "s", gpu,
     )
 end
@@ -903,4 +903,4 @@ function _detect_gpu()::String
     end
 end
 
-end # module PULSAR
+end # module Pulsar

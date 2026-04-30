@@ -1,5 +1,5 @@
 # ============================================================
-# PULSAR.jl — Parameter Validation
+# Pulsar.jl — Parameter Validation
 # Pulse Design Library for Spin Control Algorithms and Rollout
 # ============================================================
 #

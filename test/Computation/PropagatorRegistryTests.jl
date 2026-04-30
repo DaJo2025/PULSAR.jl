@@ -9,7 +9,7 @@
 #     ErrorException — they are skeletons, not silent no-ops.
 
 using Test
-using PULSAR
+using Pulsar
 using LinearAlgebra
 using Random
 

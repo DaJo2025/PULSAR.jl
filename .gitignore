@@ -16,7 +16,7 @@ deps/downloads/
 deps/usr/
 deps/src/
 
-# PULSAR-specific outputs
+# Pulsar-specific outputs
 *.jls
 *.bruker
 

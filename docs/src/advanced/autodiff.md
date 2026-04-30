@@ -1,13 +1,13 @@
 # Automatic differentiation
 
-PULSAR provides automatic-differentiation gradients as an alternative to the
+Pulsar provides automatic-differentiation gradients as an alternative to the
 analytic GRAPE kernel. AD is useful for:
 
 - Verifying analytic gradients during development
 - Custom objectives that don't yet have an analytic gradient
 - Rapid prototyping of new penalty terms
 
-Source: [`src/Physics/AutoDiff.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/src/Physics/AutoDiff.jl).
+Source: [`src/Physics/AutoDiff.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/src/Physics/AutoDiff.jl).
 
 ## Backends
 
@@ -21,8 +21,8 @@ extension is loaded as soon as the backing package is in your environment.
 
 | Extension | Source |
 |---|---|
-| `PULSARForwardDiffExt` | [`ext/PULSARForwardDiffExt.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/ext/PULSARForwardDiffExt.jl) |
-| `PULSARZygoteExt`      | [`ext/PULSARZygoteExt.jl`](https://github.com/DaJo2025/PULSAR.jl/blob/main/ext/PULSARZygoteExt.jl) |
+| `PulsarForwardDiffExt` | [`ext/PulsarForwardDiffExt.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/ext/PulsarForwardDiffExt.jl) |
+| `PulsarZygoteExt`      | [`ext/PulsarZygoteExt.jl`](https://github.com/DaJo2025/Pulsar.jl/blob/main/ext/PulsarZygoteExt.jl) |
 
 ## API
 
@@ -48,7 +48,7 @@ Both routines fall back to a finite-difference gradient
 - **Analytic** (`compute_grape_gradient`): fastest, available for the standard
   fidelity / penalty combinations. Always prefer this in production.
 - **Forward AD**: small parameter counts; dimension-light per-parameter cost
-- **Reverse AD**: many parameters, single objective — but PULSAR's reverse
+- **Reverse AD**: many parameters, single objective — but Pulsar's reverse
   kernels are still the tighter choice for `n_steps × n_c > ~1000`
 - **Finite differences**: only for verification, never optimization
 
