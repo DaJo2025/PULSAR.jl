@@ -515,9 +515,8 @@ function ensemble_grad!(
         Float64.(weight)
     end
 
-    # Per-thread gradient buffers (avoids allocations inside the loop).
-    # maxthreadid() so the buffer is sized for any tid that may be reported.
-    n_threads = Threads.maxthreadid()
+    # Per-thread gradient buffers (avoids allocations inside the loop)
+    n_threads = Threads.nthreads()
     bufs = [zeros(Float64, p) for _ in 1:n_threads]
 
     # Accumulator (protected by a lock for thread safety)

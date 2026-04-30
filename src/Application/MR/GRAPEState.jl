@@ -151,9 +151,8 @@ function _grape_cpu(waveform::Matrix{Float64}, ctrl)
     grad_buf = [zeros(Float64, n_ctrl, n_t) for _ in 1:n_outer]
 
     # ── Pre-allocate per-thread scratch to eliminate hot-loop allocations ─────
-    # Indexed by Threads.threadid(). Use maxthreadid() so the buffer is sized to
-    # the largest tid that may be reported under Julia 1.12+ scheduling.
-    n_th = Threads.maxthreadid()
+    # Indexed by Threads.threadid() (1-based, static scheduler).
+    n_th = Threads.nthreads()
     # Propagator matrices: one pre-allocated [dim×dim] matrix per (thread, step)
     Ps_bufs   = [[Matrix{ComplexF64}(undef, dim, dim) for _ in 1:n_t]
                   for _ in 1:n_th]
@@ -300,7 +299,7 @@ function _grape_gpu_kernel(waveform::Matrix{Float64}, ctrl, to_gpu, ::Type{T}) w
     Ps_cpu    = Array{T}(undef, dim, dim, n_outer, n_t)
     PsAdj_cpu = Array{T}(undef, dim, dim, n_outer, n_t)
 
-    n_th_gpu  = Threads.maxthreadid()
+    n_th_gpu  = Threads.nthreads()
     H_bufs_g  = [Matrix{ComplexF64}(undef, dim, dim) for _ in 1:n_th_gpu]
     VD_bufs_g = [Matrix{ComplexF64}(undef, dim, dim) for _ in 1:n_th_gpu]
     P_bufs_g  = [Matrix{ComplexF64}(undef, dim, dim) for _ in 1:n_th_gpu]
@@ -476,7 +475,7 @@ function _fidelity_cpu(waveform, drifts, pwr_levels, operators,
     n_outer   = length(ens_pairs)
     N_ens     = n_outer * n_pairs
 
-    n_th_f   = Threads.maxthreadid()
+    n_th_f   = Threads.nthreads()
     dim_f    = size(drifts[1], 1)
     H_bufs_f = [Matrix{ComplexF64}(undef, dim_f, dim_f) for _ in 1:n_th_f]
     VD_bufs_f= [Matrix{ComplexF64}(undef, dim_f, dim_f) for _ in 1:n_th_f]
@@ -527,7 +526,7 @@ function _fidelity_gpu(waveform, drifts, pwr_levels, operators,
 
     # Build propagators on CPU in parallel, single bulk GPU transfer
     Ps_cpu   = Array{T}(undef, dim, dim, n_outer, n_t)
-    n_th_fg  = Threads.maxthreadid()
+    n_th_fg  = Threads.nthreads()
     H_bfg    = [Matrix{ComplexF64}(undef, dim, dim) for _ in 1:n_th_fg]
     VD_bfg   = [Matrix{ComplexF64}(undef, dim, dim) for _ in 1:n_th_fg]
     P_bfg    = [Matrix{ComplexF64}(undef, dim, dim) for _ in 1:n_th_fg]

@@ -110,10 +110,8 @@ function _grape_lindblad_cpu(waveform::Matrix{Float64}, ctrl)
     fid_buf  = zeros(Float64, n_outer)
     grad_buf = [zeros(Float64, n_ctrl, n_t) for _ in 1:n_outer]
 
-    # Per-thread scratch — avoids allocations inside the hot loop.
-    # Use maxthreadid() so buffers cover any tid that may be reported
-    # under Julia 1.12+ scheduling.
-    n_th = Threads.maxthreadid()
+    # Per-thread scratch — avoids allocations inside the hot loop
+    n_th = Threads.nthreads()
 
     # Propagator matrices: [N²×N²] per (thread, step)
     Phi_bufs  = [[Matrix{ComplexF64}(undef, N2, N2) for _ in 1:n_t]
@@ -335,7 +333,7 @@ function _grape_lindblad_chunked(
     fidelity_sum = 0.0
     grad_sum     = zeros(Float64, n_ctrl, n_t)
 
-    n_th   = Threads.maxthreadid()
+    n_th   = Threads.nthreads()
     L_bufs = [Matrix{ComplexF64}(undef, N2, N2) for _ in 1:n_th]
 
     old_blas = BLAS.get_num_threads()
@@ -533,7 +531,7 @@ function _grape_lindblad_streaming(
     fidelity_sum = 0.0
     grad_sum     = zeros(Float64, n_ctrl, n_t)
 
-    n_th   = Threads.maxthreadid()
+    n_th   = Threads.nthreads()
     L_bufs = [Matrix{ComplexF64}(undef, N2, N2) for _ in 1:n_th]
 
     # ── Build ALL propagators on CPU (once, parallel) ─────────────────────────
