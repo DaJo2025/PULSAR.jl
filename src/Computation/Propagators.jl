@@ -145,7 +145,7 @@ function compute_propagators(H_total::Array{ComplexF64,3},
     dim = d1
     propagators = Array{ComplexF64,3}(undef, n_timesteps, dim, dim)
     @inbounds for k in 1:n_timesteps
-        Hk = @view H_total[k, :, :]    # dim × dim slice (view, no alloc)
+        Hk = H_total[k, :, :]          # dim × dim dense copy (column-contiguous)
         Uk = compute_propagator(Hk, dt)
         copyto!(@view(propagators[k, :, :]), Uk)
     end
