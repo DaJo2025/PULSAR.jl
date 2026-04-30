@@ -22,14 +22,12 @@ Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 
 [weakdeps]
 ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
-JSON3 = "0f8b85d8-7e73-4b8f-9b4b-4a75e3d53b4d"
 LBFGSB = "5be7bae1-8223-5378-bac3-9e7378a2f6e6"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 Zygote = "e88e6eb3-aa80-5325-afca-941959d7151f"
 
 [extensions]
 PULSARForwardDiffExt = "ForwardDiff"
-PULSARJSON3Ext = "JSON3"
 PULSARLBFGSBExt = "LBFGSB"
 PULSARPlotsExt = "Plots"
 PULSARZygoteExt = "Zygote"
